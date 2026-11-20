@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#2b55f5">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="ابدأ برمجة">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%232b55f5'/%3E%3Cstop offset='100%25' stop-color='%237b52ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='512' height='512' rx='112' fill='url(%23g)'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffc83d' font-family='monospace' font-weight='900' font-size='210'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Crect width='512' height='512' rx='112' fill='%232b55f5'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' fill='%23ffc83d' font-family='monospace' font-weight='900' font-size='210'%3E%26lt;/%26gt;%3C/text%3E%3C/svg%3E">
+<title>ابدأ برمجة — تعلّم البرمجة صح من الصفر</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f2f5fa;--surface:#fff;--ink:#101a33;--muted:#55607a;--line:#d9e0ee;--accent:#2b55f5;--accent-ink:#fff;--sun:#ffc83d;--ok:#12805c;--code-bg:#101a33;--code-ink:#cfe0ff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b1020;--surface:#141b33;--ink:#eaf0ff;--muted:#a3aecb;--line:#26304f;--accent:#7b97ff;--accent-ink:#0b1020;--sun:#ffd25e;--ok:#4cd6a0;--code-bg:#05080f;--code-ink:#cfe0ff;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0b1020;--surface:#141b33;--ink:#eaf0ff;--muted:#a3aecb;--line:#26304f;--accent:#7b97ff;--accent-ink:#0b1020;--sun:#ffd25e;--ok:#4cd6a0;--code-bg:#05080f;--code-ink:#cfe0ff;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Tajawal,system-ui,sans-serif;font-size:17px;line-height:1.8}
+h1,h2,h3{font-family:Cairo,Tajawal,sans-serif;line-height:1.35;margin:0}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px;border-radius:6px}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--line)}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+.nav{display:flex;align-items:center;gap:18px;height:62px}
+.logo{font-family:Cairo;font-weight:900;font-size:22px;text-decoration:none;display:flex;align-items:center;gap:8px}
+.logo i{font-style:normal;direction:ltr;background:var(--ink);color:var(--sun);border-radius:8px;padding:0 8px;font-size:16px;line-height:30px}
+.nav a.l{text-decoration:none;color:var(--muted);font-weight:500}
+.nav a.l:hover{color:var(--ink)}
+.sp{flex:1}
+.nav .links{display:flex;gap:18px}
+@media(max-width:640px){.nav .links{display:none}}
+.btn{font:inherit;font-weight:700;border:0;border-radius:10px;padding:10px 20px;cursor:pointer;background:var(--accent);color:var(--accent-ink);text-decoration:none;display:inline-block}
+.btn.alt{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
+.icon{background:none;border:1.5px solid var(--line);color:var(--ink);border-radius:10px;width:40px;height:40px;cursor:pointer;font-size:18px}
+.hero{padding:64px 0 48px;display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center}
+@media(max-width:860px){.hero{grid-template-columns:1fr;padding-top:40px}}
+.hero h1{font-size:clamp(34px,5.4vw,60px);font-weight:900}
+.hero p{color:var(--muted);font-size:19px;max-width:30em;margin:18px 0 28px}
+.cta{display:flex;gap:12px;flex-wrap:wrap}
+.code{direction:ltr;text-align:left;background:var(--code-bg);color:var(--code-ink);border-radius:16px;padding:20px 22px;font:15px/1.8 ui-monospace,Menlo,Consolas,monospace;box-shadow:8px 8px 0 var(--sun);overflow-x:auto}
+.code b{color:var(--sun);font-weight:400}.code em{color:#7de0b0;font-style:normal}.code s{color:#7b8bb5;text-decoration:none}
+.bar{display:flex;gap:28px;flex-wrap:wrap;padding:18px 0 40px;color:var(--muted)}
+.bar strong{color:var(--ink);font-family:Cairo;font-size:20px;margin-inline-start:6px}
+section{padding:56px 0}
+section h2{font-size:clamp(26px,3.6vw,38px);font-weight:900}
+.lead{color:var(--muted);max-width:40em;margin:8px 0 28px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1.5px solid var(--ink);border-radius:16px;overflow:hidden;background:var(--surface)}
+@media(max-width:860px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.steps{grid-template-columns:1fr}}
+.step{padding:22px;border-inline-end:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.step .n{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--sun);color:#101a33;font-family:Cairo;font-weight:900;margin-bottom:8px}
+.step h3{font-size:19px}.step p{margin:6px 0 0;color:var(--muted);font-size:15.5px;line-height:1.7}
+.tools{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:24px}
+.search{flex:1;min-width:200px;font:inherit;padding:11px 16px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+.chip{font:inherit;font-weight:500;border:1.5px solid var(--line);background:var(--surface);color:var(--ink);padding:8px 16px;border-radius:99px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.prog{color:var(--muted);font-size:15px}.prog b{color:var(--ok);font-family:Cairo}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{position:relative;text-align:start;font:inherit;color:inherit;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:20px;cursor:pointer;display:flex;flex-direction:column;gap:8px;transition:border-color .15s,transform .15s}
+.card:hover{border-color:var(--accent);transform:translateY(-3px)}
+.badge{direction:ltr;align-self:flex-start;min-width:52px;height:52px;display:grid;place-items:center;border-radius:12px;font:700 20px Cairo;color:#fff;padding:0 10px}
+.card h3{font-size:20px}.card p{margin:0;color:var(--muted);font-size:15.5px;line-height:1.7}
+.meta{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:8px;font-size:14px;color:var(--muted)}
+.dots{letter-spacing:3px;color:var(--accent)}
+.done{position:absolute;top:14px;inset-inline-end:14px;background:var(--ok);color:var(--bg);font-size:13px;font-weight:700;border-radius:99px;padding:0 10px}
+.empty{padding:30px;border:1.5px dashed var(--line);border-radius:14px;color:var(--muted);text-align:center}
+.rules{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0 40px}
+.rule{padding:18px 0;border-top:1.5px solid var(--line)}
+.rule h3{font-size:20px;margin-bottom:4px}.rule p{margin:0;color:var(--muted)}
+.chan{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.chan a{display:block;background:var(--surface);border:1.5px solid var(--line);border-radius:12px;padding:16px 18px;text-decoration:none}
+.chan a:hover{border-color:var(--accent)}.chan b{font-family:Cairo;font-size:18px;display:block}.chan span{color:var(--muted);font-size:15px}
+footer{border-top:1px solid var(--line);padding:30px 0 40px;color:var(--muted);font-size:15px}
+dialog{border:0;padding:0;border-radius:18px;max-width:720px;width:calc(100% - 28px);max-height:calc(100% - 28px);background:var(--surface);color:var(--ink);box-shadow:0 20px 60px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(5,8,20,.6)}
+.dh{padding:24px 26px 18px;display:flex;gap:16px;align-items:center;position:sticky;top:0;background:var(--surface);border-bottom:1px solid var(--line)}
+.dh h2{font-size:26px}.dh small{color:var(--muted);display:block}
+.db{padding:6px 26px 26px}
+.db h3{font-size:18px;margin:20px 0 6px;color:var(--accent)}
+.db p,.db ul,.db ol{margin:0;padding-inline-start:0}.db ul,.db ol{padding-inline-start:22px}
+.db li{margin:3px 0}
+.vids{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:6px}
+@media(max-width:520px){.vids{grid-template-columns:1fr}}
+.vid{display:flex;gap:12px;align-items:center;border:1.5px solid var(--line);border-radius:12px;padding:14px;text-decoration:none}
+.vid:hover{border-color:var(--accent)}
+.play{flex:none;width:44px;height:32px;border-radius:9px;background:#e62117;color:#fff;display:grid;place-items:center;font-size:14px}
+.vid b{display:block;line-height:1.4}.vid span{font-size:14px;color:var(--muted)}
+.acts{display:flex;gap:10px;margin-top:24px;flex-wrap:wrap}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+/* مجالات */
+.grp{margin-bottom:38px}.grp>h3{font-size:22px;margin-bottom:2px}.grp>p{margin:0 0 14px;color:var(--muted);font-size:15.5px}
+.tag{position:absolute;top:14px;inset-inline-end:14px;background:var(--surface);border:1.5px solid var(--line);font-size:13px;font-weight:700;border-radius:99px;padding:0 10px}
+.tag.ok{background:var(--ok);border-color:var(--ok);color:var(--bg)}
+/* الامتحان */
+.qtop{display:flex;justify-content:space-between;color:var(--muted);font-size:15px;margin-top:18px}
+.qbar{height:8px;border-radius:99px;background:var(--line);margin:8px 0 18px;overflow:hidden}.qbar i{display:block;height:100%;background:var(--accent);transition:width .25s}
+.qt{font:700 21px/1.6 Cairo,sans-serif;margin:0 0 14px}
+.qt,.opt{unicode-bidi:plaintext}
+.opts{display:grid;gap:10px}
+.opt{font:inherit;text-align:start;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:12px;padding:13px 16px;cursor:pointer}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.ok{border-color:var(--ok);background:color-mix(in srgb,var(--ok) 16%,var(--surface))}
+.opt.bad{border-color:#d33;background:color-mix(in srgb,#d33 14%,var(--surface))}
+.opt:disabled{cursor:default;color:var(--ink)}
+.fb{margin-top:14px;padding:12px 16px;border-radius:12px;background:var(--bg);border-inline-start:4px solid var(--accent)}
+.score{text-align:center;padding:24px 0}.score b{display:block;font:900 56px Cairo;color:var(--accent)}
+
+/* ===== قسم الامتحان ===== */
+.selrow label{display:block;font-weight:700;margin-bottom:6px}
+.selrow select{font:inherit;width:100%;max-width:420px;padding:11px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--surface);color:var(--ink)}
+.lvls{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin:22px 0}
+.lv{font:inherit;color:inherit;text-align:start;background:var(--surface);border:1.5px solid var(--line);border-radius:14px;padding:14px 16px;cursor:pointer;display:flex;flex-direction:column;gap:4px}
+.lv b{font:700 18px Cairo,sans-serif}.lv span{color:var(--muted);font-size:15px;line-height:1.6}.lv small{color:var(--accent);font-size:13.5px;margin-top:auto}
+.lv[aria-pressed="true"]{border-color:var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 25%,transparent)}
+.xpanel{background:var(--surface);border:1.5px solid var(--line);border-radius:16px;padding:22px 24px}
+/* ===== محرر الأكواد (شبه VS Code) ===== */
+.vsc{border-radius:12px;overflow:hidden;background:#1e1e1e;color:#d4d4d4;border:1px solid #333;box-shadow:0 14px 40px rgba(0,0,0,.25);font-family:Tajawal,system-ui,sans-serif}
+.vs-title{background:#323233;display:flex;gap:8px;align-items:center;padding:8px 14px;font-size:13px;color:#ccc}
+.vs-title i{width:12px;height:12px;border-radius:50%;display:block}.vs-title .r{background:#ff5f56}.vs-title .y{background:#ffbd2e}.vs-title .g{background:#27c93f}
+.vs-title span{margin:0 auto;font-family:ui-monospace,Menlo,Consolas,monospace}
+.vs-body{display:grid;grid-template-columns:48px 230px 1fr;min-height:580px}
+.vs-act{background:#333;display:flex;flex-direction:column;align-items:center;gap:20px;padding-top:14px;color:#858585;font-size:22px}
+.vs-act .on{color:#fff}
+.vs-side{background:#252526;font-size:13.5px;overflow:auto;max-height:620px}
+.vh{padding:10px 14px;font-size:11px;letter-spacing:1px;color:#bbb}
+.fd{padding:4px 12px;font-weight:700;color:#ccc;margin-top:6px}
+.fl{display:block;width:100%;text-align:left;background:none;border:0;color:#ccc;font:13.5px ui-monospace,Menlo,Consolas,monospace;padding:4px 12px 4px 30px;cursor:pointer}
+.fl:hover{background:#2a2d2e}.fl.on{background:#37373d;color:#fff}.ck{color:#4ec9b0}
+.vs-main{min-width:0;display:flex;flex-direction:column}
+.vs-tabs{background:#252526;display:flex}
+.tab{background:#1e1e1e;border-top:2px solid #007acc;padding:7px 16px;font:13px ui-monospace,Menlo,Consolas,monospace;color:#fff}
+.vs-task{padding:12px 18px;background:#1b2a3a;border-bottom:1px solid #333;font-size:15px;line-height:1.8;color:#dbe7f5}
+.vs-task small{color:#9fb4cc}
+.vs-ed{display:flex;height:330px}
+.gut{margin:0;min-width:46px;padding:12px 10px 30px;text-align:right;color:#858585;overflow:hidden;font:14px/22px ui-monospace,Menlo,Consolas,monospace;user-select:none}
+.stack{position:relative;flex:1;min-width:0}
+.hl,#ta{position:absolute;inset:0;margin:0;padding:12px 12px 30px;border:0;font:14px/22px ui-monospace,Menlo,Consolas,monospace;white-space:pre;tab-size:2;text-align:left}
+.hl{overflow:hidden;pointer-events:none;color:#d4d4d4}
+.hl i{font-style:normal}.hl .c{color:#6a9955}.hl .s{color:#ce9178}.hl .k{color:#569cd6}.hl .n{color:#b5cea8}
+#ta{width:100%;height:100%;background:transparent;color:transparent;caret-color:#fff;resize:none;outline:none;overflow:auto}
+#ta::selection{background:#264f78;color:transparent}
+.vs-panel{border-top:1px solid #333;background:#1e1e1e}
+.vs-pt{display:flex;gap:8px;align-items:center;padding:6px 14px;font-size:12px;letter-spacing:1px;color:#ccc;border-bottom:1px solid #2d2d2d}
+.vs-pt button{font:700 12px Tajawal,sans-serif;background:#0e639c;color:#fff;border:0;border-radius:4px;padding:5px 12px;cursor:pointer}
+.vs-pt button#rs{background:#3a3d41}
+#out{margin:0;padding:12px 16px;height:190px;overflow:auto;font:13.5px/1.7 ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;color:#d4d4d4}
+#out .g{color:#4ec9b0}#out .rd{color:#f48771}
+.vs-status{background:#007acc;color:#fff;display:flex;gap:18px;padding:3px 14px;font-size:12.5px}
+@media(max-width:760px){.vs-body{grid-template-columns:1fr}.vs-act{display:none}.vs-side{max-height:150px}}
+/* ===== تسجيل الدخول ===== */
+.soc{display:grid;gap:10px;margin:6px 0 4px}
+.sb{font:700 16px Tajawal,sans-serif;display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer;text-align:start}
+.sb:hover{border-color:var(--accent)}
+.sb .ico{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;color:#fff;font:900 16px Cairo,sans-serif;direction:ltr}
+.sep{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:14px;margin:18px 0}
+.sep::before,.sep::after{content:"";flex:1;height:1px;background:var(--line)}
+.fld{display:block;margin-bottom:12px;font-weight:700;font-size:15px}
+.fld input{display:block;width:100%;margin-top:5px;font:inherit;font-weight:400;padding:11px 14px;border-radius:10px;border:1.5px solid var(--line);background:var(--bg);color:var(--ink)}
+.tabs2{display:flex;gap:6px;background:var(--bg);padding:4px;border-radius:12px;margin:18px 0 14px}
+.tabs2 button{flex:1;font:700 15px Tajawal,sans-serif;border:0;border-radius:9px;padding:9px;cursor:pointer;background:none;color:var(--muted)}
+.tabs2 button[aria-selected="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 4px rgba(0,0,0,.15)}
+.msg{margin:10px 0 0;padding:10px 14px;border-radius:10px;font-size:15px;line-height:1.7}
+.msg.err{background:color-mix(in srgb,#d33 14%,var(--surface));border:1px solid #d33}
+.msg.inf{background:var(--bg);border-inline-start:4px solid var(--sun)}
+.avatar{width:64px;height:64px;border-radius:50%;background:var(--accent);color:var(--accent-ink);display:grid;place-items:center;font:900 28px Cairo,sans-serif;margin:8px auto 10px}
+.acct{text-align:center;padding:10px 0 4px}.acct p{margin:2px 0;color:var(--muted)}
+.fine{font-size:13.5px;color:var(--muted);margin-top:14px}
+
+
+/* ===== تحسينات التصميم المميز ورسالة التثبيت كتطبيق ===== */
+body{background-image:radial-gradient(at 15% 10%,color-mix(in srgb,var(--accent) 11%,transparent) 0px,transparent 50%),radial-gradient(at 85% 25%,color-mix(in srgb,var(--sun) 12%,transparent) 0px,transparent 48%),radial-gradient(at 50% 85%,color-mix(in srgb,var(--ok) 9%,transparent) 0px,transparent 55%);background-attachment:fixed}
+header.top{background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.logo i{background:linear-gradient(135deg,var(--accent),#7f52ff);color:var(--sun);box-shadow:0 4px 14px color-mix(in srgb,var(--accent) 40%,transparent)}
+.hero{position:relative}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;padding:6px 14px;border-radius:99px;background:color-mix(in srgb,var(--accent) 12%,var(--surface));border:1px solid color-mix(in srgb,var(--accent) 30%,var(--line));color:var(--accent);font-weight:700;font-size:14px;margin-bottom:14px}
+.hero h1 span.grad{background:linear-gradient(135deg,var(--accent),#8b5cf6,#ec4899);-webkit-background-clip:text;background-clip:text;color:transparent}
+.code{position:relative;border:1px solid rgba(255,255,255,.12);box-shadow:10px 10px 0 var(--sun),0 24px 50px rgba(0,0,0,.28);transition:transform .3s ease}
+.code:hover{transform:translateY(-4px) rotate(-.5deg)}
+.code-dots{display:flex;gap:6px;margin-bottom:12px;padding-bottom:10px;border-bottom:1px solid rgba(255,255,255,.08)}
+.code-dots span{width:10px;height:10px;border-radius:50%;display:inline-block}
+.btn{transition:transform .18s ease,box-shadow .18s ease,filter .18s ease;box-shadow:0 6px 18px color-mix(in srgb,var(--accent) 28%,transparent)}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.06)}
+.btn.alt{box-shadow:none}
+.btn.alt:hover{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--surface))}
+.card{box-shadow:0 4px 16px rgba(16,26,51,.04);transition:border-color .2s,transform .22s cubic-bezier(.2,.8,.2,1),box-shadow .22s}
+.card:hover{border-color:var(--accent);transform:translateY(-5px);box-shadow:0 14px 30px color-mix(in srgb,var(--accent) 16%,transparent)}
+.steps{box-shadow:0 12px 32px rgba(16,26,51,.06);border-color:color-mix(in srgb,var(--ink) 75%,var(--line))}
+.step{transition:background .2s}
+.step:hover{background:color-mix(in srgb,var(--accent) 4%,var(--surface))}
+.bar span{background:var(--surface);border:1px solid var(--line);padding:8px 16px;border-radius:12px;box-shadow:0 2px 10px rgba(0,0,0,.03)}
+
+/* ===== نافذة / بانر تثبيت التطبيق (PWA Install Prompt) ===== */
+.pwa-overlay{position:fixed;inset:0;z-index:9999;background:rgba(8,12,28,.62);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);display:grid;place-items:center;padding:18px;opacity:0;pointer-events:none;transition:opacity .3s ease}
+.pwa-overlay.show{opacity:1;pointer-events:auto}
+.pwa-card{width:100%;max-width:440px;background:var(--surface);color:var(--ink);border:1.5px solid color-mix(in srgb,var(--accent) 35%,var(--line));border-radius:24px;padding:26px 24px 22px;box-shadow:0 28px 70px rgba(0,0,0,.38);transform:translateY(24px) scale(.96);transition:transform .35s cubic-bezier(.2,.9,.2,1);position:relative;overflow:hidden}
+.pwa-overlay.show .pwa-card{transform:translateY(0) scale(1)}
+.pwa-card::before{content:"";position:absolute;inset:0 0 auto;height:5px;background:linear-gradient(90deg,var(--accent),#8b5cf6,var(--sun))}
+.pwa-top{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.pwa-appicon{flex:none;width:60px;height:60px;border-radius:16px;background:linear-gradient(135deg,var(--accent),#7f52ff);color:var(--sun);display:grid;place-items:center;font:900 22px Cairo,monospace;direction:ltr;box-shadow:0 10px 24px color-mix(in srgb,var(--accent) 38%,transparent)}
+.pwa-title{font:900 21px/1.35 Cairo,sans-serif;margin:0}
+.pwa-sub{color:var(--muted);font-size:14.5px;margin:2px 0 0}
+.pwa-feats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 18px;background:var(--bg);padding:12px;border-radius:14px;border:1px solid var(--line);font-size:14px}
+.pwa-feats div{display:flex;align-items:center;gap:6px;font-weight:500}
+.pwa-feats b{color:var(--ok)}
+.pwa-guide{background:color-mix(in srgb,var(--sun) 16%,var(--bg));border:1px solid color-mix(in srgb,var(--sun) 45%,var(--line));border-radius:12px;padding:11px 14px;font-size:14px;line-height:1.65;margin-bottom:16px}
+.pwa-btns{display:flex;gap:10px}
+.pwa-btns .btn{flex:1;text-align:center;padding:12px 16px;font-size:16px}
+.pwa-close{position:absolute;top:14px;inset-inline-end:14px;width:34px;height:34px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--muted);cursor:pointer;font-size:16px}
+.pwa-close:hover{color:var(--ink);border-color:var(--accent)}
+.nav-install{display:inline-flex;align-items:center;gap:6px;font-size:14.5px;padding:8px 14px;background:linear-gradient(135deg,var(--accent),#6d4aff);color:#fff}
+@media(max-width:480px){.nav-install span{display:none}}
+
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap nav">
+  <a class="logo" href="#top"><i>&lt;/&gt;</i>ابدأ برمجة</a>
+  <div class="links"><a class="l" href="#path">خطة التعلم</a><a class="l" href="#langs">اللغات</a><a class="l" href="#rules">أساسيات صح</a><a class="l" href="#channels">قنوات مفيدة</a></div>
+  <span class="sp"></span>
+  <button class="btn nav-install" id="navInstall" title="تثبيت الموقع كتطبيق">📲 <span>تثبيت التطبيق</span></button>
+  <button class="icon" id="theme" aria-label="تبديل الوضع الليلي">◐</button>
+</div></header>
+
+<main id="top">
+<div class="wrap">
+  <div class="hero">
+    <div>
+      <div class="hero-tag">✨ منصة تفاعلية مجانية + محرر أكواد مدمج</div>
+      <h1>تعلّم البرمجة <span class="grad">بالطريقة الصحيحة</span>، خطوة بخطوة</h1>
+      <p>اختر لغتك، اعرف أهميتها وهتعمل بيها إيه، وابدأ على طول بفيديوهات من يوتيوب مختارة بالعربي والإنجليزي. من غير تشتت ومن غير تخمين.</p>
+      <div class="cta"><a class="btn" href="#langs">اختر لغتك</a><a class="btn alt" href="#path">شوف خطة التعلم</a></div>
+    </div>
+    <div class="code" aria-hidden="true"><div class="code-dots"><span style="background:#ff5f56"></span><span style="background:#ffbd2e"></span><span style="background:#27c93f"></span></div><s># أول برنامج ليك</s><br><b>name</b> = <em>"أحمد"</em><br><b>for</b> day <b>in</b> range(<em>1</em>, <em>31</em>):<br>&nbsp;&nbsp;&nbsp;&nbsp;print(<em>f"اليوم {day}: بتتعلم وبتكتب كود"</em>)<br><s># كل يوم خطوة، وبعد شهر الفرق كبير</s></div>
+  </div>
+  <div class="bar"><span>اللغات المشروحة<strong id="cnt">9</strong></span><span>كل لغة فيها<strong>شرح + فيديوهات + امتحان</strong></span><span>مجاني بالكامل</span></div>
+</div>
+
+<section id="path"><div class="wrap">
+  <h2>خطة تعلم واضحة من الصفر</h2>
+  <p class="lead">أغلب الناس بتفشل لأنها بتقفز بين لغات كتير. اتبع الترتيب ده وهتوفّر شهور.</p>
+  <div class="steps">
+    <div class="step"><span class="n">1</span><h3>افهم الأساسيات</h3><p>المتغيرات، الشروط، الحلقات، والدوال. دي نفسها في كل اللغات.</p></div>
+    <div class="step"><span class="n">2</span><h3>اختر لغة واحدة</h3><p>اختارها على حسب هدفك: مواقع، تطبيقات، بيانات، أو ألعاب. وكمّل فيها.</p></div>
+    <div class="step"><span class="n">3</span><h3>اعمل مشاريع صغيرة</h3><p>آلة حاسبة، قائمة مهام، موقع شخصي. المشروع بيعلّمك أكتر من عشرة دروس.</p></div>
+    <div class="step"><span class="n">4</span><h3>انشر شغلك</h3><p>ارفع كودك على GitHub وشارك مشاريعك. ده أقوى سيرة ذاتية.</p></div>
+  </div>
+</div></section>
+
+<section id="langs"><div class="wrap">
+  <h2>لغات البرمجة</h2>
+  <p class="lead">اللغات مقسمة إلى مجالات. اضغط على أي لغة تشوف شرحها وأهميتها وفيديوهاتها، وبعدين اختبر نفسك.</p>
+  <div class="tools">
+    <input class="search" id="q" type="search" placeholder="ابحث عن لغة…" aria-label="ابحث عن لغة">
+    <div id="chips" role="group" aria-label="تصفية حسب المجال"></div>
+    <span class="prog" id="prog"></span>
+  </div>
+  <div id="grid"></div>
+</div></section>
+
+<section id="rules"><div class="wrap">
+  <h2>إزاي تتعلم صح</h2>
+  <p class="lead">العادات دي بتفرّق بين اللي بيكمّل واللي بيقف في النص.</p>
+  <div class="rules">
+    <div class="rule"><h3>اكتب الكود بإيدك</h3><p>متكتفيش بالمشاهدة. اوقف الفيديو واكتب الكود بنفسك وجرّب تغيّر فيه.</p></div>
+    <div class="rule"><h3>لغة واحدة في كل مرة</h3><p>كمّل لغة واحدة لحد ما تعمل بيها مشروع كامل، وبعدها انتقل.</p></div>
+    <div class="rule"><h3>ممارسة يومية قصيرة</h3><p>ساعة كل يوم أفضل من عشر ساعات في يوم واحد. الاستمرارية هي السر.</p></div>
+    <div class="rule"><h3>اتعلم من الأخطاء</h3><p>الخطأ في الكود طبيعي. اقرأ رسالة الخطأ، وابحث عنها، وده نفسه شغل المبرمج.</p></div>
+    <div class="rule"><h3>اطلع على الوثائق الرسمية</h3><p>بعد ما تفهم الأساس، اتعود تقرأ documentation اللغة. ده بيخليك مستقل.</p></div>
+    <div class="rule"><h3>اسأل وشارك</h3><p>اسأل في المجتمعات والمنتديات، وساعد غيرك. الشرح للغير بيثبّت المعلومة.</p></div>
+  </div>
+</div></section>
+
+<section id="channels"><div class="wrap">
+  <h2>قنوات يوتيوب نرشحها</h2>
+  <p class="lead">قنوات معروفة بجودة شرحها. الروابط بتفتح القناة على يوتيوب.</p>
+  <div class="chan">
+    <a href="https://www.youtube.com/results?search_query=Elzero+Web+School" target="_blank" rel="noopener"><b>Elzero Web School</b><span>عربي — كورسات طويلة ومنظمة جدًا في الويب واللغات</span></a>
+    <a href="https://www.youtube.com/results?search_query=freeCodeCamp.org" target="_blank" rel="noopener"><b>freeCodeCamp</b><span>إنجليزي — كورسات كاملة مجانية لعدة ساعات</span></a>
+    <a href="https://www.youtube.com/results?search_query=CS50+Harvard" target="_blank" rel="noopener"><b>CS50 – Harvard</b><span>إنجليزي — أفضل مدخل لعلوم الحاسب</span></a>
+    <a href="https://www.youtube.com/results?search_query=Programming+with+Mosh" target="_blank" rel="noopener"><b>Programming with Mosh</b><span>إنجليزي — شرح مبسط ومرتب للمبتدئين</span></a>
+  </div>
+</div></section>
+</main>
+
+<footer><div class="wrap">ابدأ برمجة — منصة تعريفية لمساعدة المبتدئين على اختيار اللغة وبدء التعلم. الفيديوهات مصدرها يوتيوب ومملوكة لأصحابها.</div></footer>
+
+<dialog id="dlg" aria-labelledby="dt"></dialog>
+
+<script>
+/* ========= البيانات ========= */
+// كل امتحان: [السؤال، الإجابة الصحيحة، خطأ1، خطأ2، الشرح] — الترتيب بيتخلط وقت العرض
+const K=["id","n","b","c","cat","d","s","what","why","use","first","ar","en","q"];
+const L=[
+["html","HTML و CSS","</>","#e4572e","ويب",1,"لغتا بناء شكل وهيكل أي صفحة ويب.",
+"HTML بتبني هيكل الصفحة، وCSS بتتحكم في شكلها وألوانها وتوزيعها.","كل موقع مبني عليهم، وبتشوف نتيجة شغلك فورًا فده بيحمّسك تكمّل.",
+["مواقع شخصية وصفحات هبوط","تصميم متجاوب مع الموبايل","أساس لأي لغة ويب"],["الوسوم الأساسية","Flexbox و Grid","صفحة سيرة ذاتية"],
+"تعلم HTML و CSS من الصفر","HTML CSS full course beginners",
+[["إيه وظيفة HTML؟","بناء هيكل الصفحة ومحتواها","تنسيق الألوان فقط","التعامل مع قواعد البيانات","HTML بتحدد المحتوى والهيكل، والتنسيق شغل CSS."],
+["أي وسم بيعمل رابط؟","<a>","<link>","<url>","وسم <a> مع الخاصية href بيعمل الرابط."],
+["أي سطر CSS بيرتب العناصر في صف مرن؟","display:flex","float:none","position:flex","display:flex بتفعّل Flexbox."]]],
+["js","JavaScript","JS","#c79a00","ويب",2,"لغة تخلي المواقع تفاعلية، وتشتغل كمان على السيرفر.",
+"بتشتغل في المتصفح وتخلي الصفحة تتفاعل مع المستخدم، ومع Node.js بتشتغل في الباك إند.","اللغة الأكثر استخدامًا في الويب، وبلغة واحدة تبني واجهة وسيرفر وتطبيق.",
+["مواقع وتطبيقات تفاعلية","سيرفرات Node.js","تطبيقات موبايل وسطح مكتب"],["المتغيرات والدوال","التعامل مع DOM","مشروع To-Do List"],
+"تعلم JavaScript من الصفر","JavaScript full course for beginners",
+[["أي كلمة بتعرّف متغير قابل للتغيير؟","let","fixed","static","let للمتغيرات، وconst للثوابت."],
+["إيه اللي بيسمح لـ JavaScript بالتعامل مع عناصر الصفحة؟","DOM","SQL","Grid","الـ DOM هو تمثيل الصفحة اللي JavaScript بتعدّل عليه."],
+["قيمة typeof 5 هي؟","'number'","'int'","'digit'","كل الأرقام في JavaScript من نوع number."]]],
+["ts","TypeScript","TS","#2d79c7","ويب",2,"JavaScript بس بأنواع بيانات تمنع أخطاء كتير.",
+"لغة بتضيف أنواع البيانات فوق JavaScript، وبتتحول لـ JavaScript قبل التشغيل.","بتكتشف أخطاءك وقت الكتابة، وبقت معيار في المشاريع الكبيرة.",
+["مشاريع ويب كبيرة","React و Angular","سيرفرات Node.js"],["الأنواع الأساسية","الـ Interfaces","تحويل مشروع JS لـ TS"],
+"تعلم TypeScript","TypeScript full course beginners",
+[["TypeScript هي؟","JavaScript مع أنواع بيانات","لغة قواعد بيانات","إطار للتصميم","هي مجموعة شاملة من JavaScript بأنواع ثابتة."],
+["امتداد ملفاتها الأساسي؟",".ts",".tp",".typ","الملفات بتنتهي بـ .ts (و .tsx لـ React)."],
+["let x: number = 5 معناها؟","x لازم يكون رقم","x لازم يكون نص","x دالة","الـ : number بتحدد نوع المتغير."]]],
+["php","PHP","PHP","#6f7bb8","ويب",1,"لغة سيرفر قديمة وقوية بتشغّل جزء كبير من الإنترنت.",
+"بتشتغل على السيرفر وتولّد صفحات الويب وتتعامل مع قواعد البيانات، وعليها إطار Laravel.","بتشغّل ووردبريس وملايين المواقع، وفرص الشغل الحر فيها كتيرة.",
+["مواقع ديناميكية","متاجر ووردبريس","واجهات برمجية بـ Laravel"],["أساسيات PHP","التعامل مع MySQL","نظام تسجيل دخول"],
+"تعلم PHP من الصفر","PHP full course for beginners",
+[["PHP بتشتغل فين؟","على السيرفر","داخل كارت الشاشة","في ملفات CSS","PHP لغة Server-side."],
+["المتغير في PHP بيبدأ بـ؟","$","@","#","كل المتغيرات بتبدأ بعلامة $."],
+["أشهر إطار PHP؟","Laravel","Django","Flutter","Laravel هو الأشهر في PHP."]]],
+["py","Python","Py","#2f6fb5","بيانات وذكاء اصطناعي",1,"لغة سهلة القراءة، الأفضل للبداية وللذكاء الاصطناعي.",
+"صياغتها قريبة من الإنجليزي، فبتركز على المنطق مش التعقيد.","الأساس في الذكاء الاصطناعي وتحليل البيانات والأتمتة، ومطلوبة بقوة.",
+["الذكاء الاصطناعي","تحليل البيانات","أتمتة المهام وتطبيقات Django"],["المتغيرات والشروط والحلقات","القوائم والقواميس","سكريبت لترتيب ملفاتك"],
+"تعلم بايثون من الصفر","Python full course for beginners",
+[["إزاي تطبع نص في بايثون؟","print('مرحبا')","echo 'مرحبا'","console.log('مرحبا')","الدالة print هي الطباعة."],
+["إيه اللي بيحدد الكتل في بايثون؟","المسافات البادئة","الأقواس { }","الفاصلة المنقوطة","بايثون بتعتمد على المسافات البادئة (indentation)."],
+["ناتج len([1,2,3])؟","3","2","4","len بترجع عدد العناصر."]]],
+["sql","SQL","SQL","#0f8a8a","بيانات وذكاء اصطناعي",1,"لغة التعامل مع قواعد البيانات واستخراج المعلومات.",
+"بتسأل بيها البيانات المخزنة وترجع لك الإجابة بسرعة.","أي تطبيق وراه قاعدة بيانات، ومهارة أساسية للمطوّر ومحلل البيانات.",
+["تقارير وتحليل بيانات","باك إند لأي تطبيق","لوحات متابعة"],["SELECT و WHERE","JOIN بين الجداول","GROUP BY"],
+"تعلم SQL من الصفر","SQL tutorial for beginners",
+[["أمر قراءة البيانات؟","SELECT","READ","FETCHALL","SELECT هو أمر الاستعلام."],
+["JOIN بتعمل إيه؟","تربط جدولين","تحذف جدول","تنسخ قاعدة البيانات","JOIN بتجمع صفوف من جداول مرتبطة."],
+["WHERE بتستخدم لـ؟","تصفية الصفوف بشرط","ترتيب النتائج","إنشاء جدول","WHERE بتحدد الصفوف المطلوبة."]]],
+["r","R","R","#2765b3","بيانات وذكاء اصطناعي",2,"لغة متخصصة في الإحصاء والرسوم البيانية.",
+"لغة مصممة للتحليل الإحصائي وعرض البيانات بشكل بصري.","مستخدمة بكثافة في الجامعات والأبحاث وتحليل البيانات.",
+["تحليل إحصائي","رسوم بيانية","أبحاث علمية"],["المتغيرات والـ data frames","مكتبة ggplot2","تحليل ملف CSV"],
+"تعلم لغة R","R programming full course beginners",
+[["R أساسًا لـ؟","الإحصاء وتحليل البيانات","تصميم المواقع","برمجة الألعاب","R لغة الإحصاء والبيانات."],
+["إزاي تعرّف متغير في R؟","x <- 5","var x = 5","int x = 5","علامة <- هي الإسناد المعتاد."],
+["أشهر مكتبة رسم في R؟","ggplot2","React","Express","ggplot2 هي الأشهر للرسوم."]]],
+["dart","Dart و Flutter","Dart","#0e8fc7","موبايل",2,"ابنِ تطبيق أندرويد و iOS بكود واحد.",
+"Dart لغة من جوجل، وFlutter إطار لبناء واجهات سريعة لعدة أنظمة.","وفّر وقتك: كود واحد لنظامين، ومطلوبة في الشركات الناشئة.",
+["تطبيقات أندرويد و iOS","واجهات جميلة وسريعة","تطبيقات ويب وسطح مكتب"],["أساسيات Dart","الـ Widgets","تطبيق قائمة مهام"],
+"تعلم فلاتر من الصفر","Flutter course for beginners",
+[["Flutter من تطوير؟","جوجل","مايكروسوفت","أبل","Flutter من جوجل."],
+["كل عنصر في واجهة Flutter اسمه؟","Widget","Module","Table","كل حاجة في Flutter عبارة عن Widget."],
+["ميزة Flutter الرئيسية؟","تطبيقات لعدة أنظمة بكود واحد","تعمل بدون إنترنت فقط","تصميم قواعد بيانات","كود واحد لأندرويد و iOS وغيره."]]],
+["kt","Kotlin","Kt","#7f52ff","موبايل",2,"لغة حديثة وموصى بيها من جوجل لتطبيقات أندرويد.",
+"لغة مختصرة وآمنة، متوافقة بالكامل مع Java.","اللغة المفضلة رسميًا لأندرويد، وأسهل من Java.",
+["تطبيقات أندرويد","سيرفرات","تطبيقات متعددة الأنظمة"],["المتغيرات والدوال","الـ null safety","تطبيق أندرويد بسيط"],
+"تعلم كوتلن أندرويد","Kotlin Android course beginners",
+[["Kotlin متوافقة بالكامل مع؟","Java","Haskell","Assembly","تقدر تستخدم كود Java داخل Kotlin."],
+["val في Kotlin بتعرّف؟","متغير ثابت","متغير يتغير","دالة","val للثابت، وvar للمتغير."],
+["Kotlin مفضّلة من جوجل لـ؟","تطبيقات أندرويد","بناء قواعد البيانات","تصميم الشعارات","جوجل بتفضلها لتطوير أندرويد."]]],
+["swift","Swift","Sw","#f05138","موبايل",2,"لغة أبل لتطبيقات iPhone و Mac.",
+"لغة حديثة وسريعة من أبل، سهلة القراءة وآمنة.","لو هدفك تطبيقات iOS فهي الطريق الأساسي.",
+["تطبيقات iPhone و iPad","تطبيقات Mac","ساعات أبل"],["أساسيات Swift","SwiftUI","تطبيق بسيط"],
+"تعلم Swift و iOS","Swift iOS development beginners",
+[["Swift من تطوير؟","أبل","جوجل","أوراكل","Swift لغة أبل."],
+["هتبني بيها تطبيقات لـ؟","iOS و macOS","أندرويد فقط","ويندوز 98 فقط","لأنظمة أبل."],
+["أداة التطوير الرسمية؟","Xcode","Photoshop","Excel","Xcode هي بيئة التطوير من أبل."]]],
+["cpp","C++","C++","#5b4bc4","ألعاب وأنظمة",3,"لغة سريعة جدًا للألعاب والأنظمة.",
+"لغة قريبة من الجهاز بتدّيك تحكم كامل في الذاكرة والأداء.","الأساس في محركات الألعاب والبرمجة التنافسية، وبتبني فهم عميق.",
+["ألعاب Unreal Engine","أنظمة التشغيل","المسابقات البرمجية"],["المؤشرات والذاكرة","الـ STL","مسائل يومية"],
+"تعلم C++ من الصفر","C++ full course for beginners",
+[["ميزة C++ الأساسية؟","سرعة وتحكم في الذاكرة","بدون كتابة كود","تشتغل في المتصفح فقط","بتدّيك أداء عالي وتحكم كامل."],
+["المؤشر (pointer) بيخزن؟","عنوان في الذاكرة","نص فقط","لون","المؤشر بيشاور على مكان في الذاكرة."],
+["cout بتستخدم لـ؟","الطباعة على الشاشة","القراءة من ملف","الاتصال بالإنترنت","cout هو مخرج الطباعة."]]],
+["cs","C#","C#","#7a3fb0","ألعاب وأنظمة",2,"لغة مايكروسوفت لألعاب Unity وتطبيقات ويندوز.",
+"لغة حديثة ومنظمة بتشتغل مع .NET وأدواتها ممتازة.","أشهر لغة لصناعة الألعاب بـ Unity، ومطلوبة في شركات مايكروسوفت.",
+["ألعاب Unity","مواقع ASP.NET","تطبيقات سطح المكتب"],["أساسيات اللغة","الكائنات و LINQ","لعبة 2D بسيطة"],
+"تعلم C# من الصفر","C# full course for beginners",
+[["C# من تطوير؟","مايكروسوفت","جوجل","موزيلا","C# من مايكروسوفت."],
+["أشهر محرك ألعاب بيستخدمها؟","Unity","WordPress","Photoshop","Unity بيعتمد على C#."],
+["أداة الاستعلام المدمجة في C#؟","LINQ","Redux","Sass","LINQ للاستعلام عن البيانات."]]],
+["rust","Rust","Rs","#b7410e","ألعاب وأنظمة",3,"لغة سريعة وآمنة للذاكرة.",
+"بتجمع سرعة C++ مع أمان في الذاكرة من غير Garbage Collector.","من أكتر اللغات المحبوبة، ومستخدمة في الأنظمة والأمن.",
+["أنظمة وأدوات","محركات ألعاب","ويب Assembly"],["الـ Ownership","الـ Cargo","مشروع أدوات سطر أوامر"],
+"تعلم لغة Rust","Rust programming full course",
+[["تركيز Rust الأساسي؟","أمان الذاكرة مع سرعة عالية","تصميم الصفحات","تحليل الجداول","Rust بتمنع أخطاء الذاكرة وتحافظ على السرعة."],
+["أداة إدارة الحزم؟","Cargo","npm","pip","Cargo هي أداة البناء والحزم."],
+["Rust بتمنع إيه وقت الترجمة؟","أخطاء الذاكرة الشائعة","كتابة التعليقات","استخدام الدوال","نظام الـ ownership بيمنعها."]]],
+["java","Java","Java","#d1481f","سيرفرات وشركات",2,"لغة قوية للشركات الكبيرة والأنظمة المصرفية.",
+"لغة كائنية بتشتغل على أي جهاز عليه JVM.","مستخدمة في أنظمة الشركات والبنوك، وبتسهّل عليك تتعلم لغات تانية.",
+["أنظمة الشركات والبنوك","سيرفرات Spring","تطبيقات أندرويد"],["الـ Classes","الوراثة والـ Interfaces","نظام إدارة مكتبة"],
+"تعلم جافا من الصفر","Java full course for beginners",
+[["شعار Java المعروف؟","اكتب مرة وشغّل في أي مكان","اكتب بدون أخطاء","اكتب أسرع من C","بفضل JVM الكود بيشتغل على أنظمة مختلفة."],
+["Java بتشتغل فوق؟","JVM","Node.js","Excel","JVM هي الآلة الافتراضية."],
+["إطار Java الشهير للسيرفرات؟","Spring","Laravel","Rails","Spring هو الأشهر."]]],
+["go","Go","Go","#00a7c4","سيرفرات وشركات",2,"لغة جوجل البسيطة والسريعة للخدمات السحابية.",
+"لغة بسيطة بتدعم التزامن بسهولة عن طريق goroutines.","مستخدمة في Docker و Kubernetes وأغلب البنية السحابية.",
+["سيرفرات وخدمات سحابية","أدوات DevOps","واجهات برمجية سريعة"],["أساسيات Go","الـ goroutines","API بسيط"],
+"تعلم لغة Go","Go programming full course",
+[["Go من تطوير؟","جوجل","أبل","مايكروسوفت","Go من جوجل."],
+["أبرز ميزاتها؟","بساطة وتزامن سهل","تصميم الصور","تنسيق الجداول","goroutines بتسهّل التزامن."],
+["Go مناسبة لـ؟","سيرفرات وخدمات سحابية","تعديل الفيديو","تصميم الشعارات","هي مصممة للخدمات الخلفية."]]]
+].map(a=>Object.fromEntries(K.map((k,i)=>[k,a[i]])));
+
+const FIELDS={"ويب":"بناء المواقع والتطبيقات اللي بتشتغل في المتصفح.","بيانات وذكاء اصطناعي":"تحليل البيانات وبناء نماذج ذكية.","موبايل":"تطبيقات أندرويد و iOS.","ألعاب وأنظمة":"ألعاب وبرامج عالية الأداء.","سيرفرات وشركات":"أنظمة خلفية وخدمات للشركات."};
+
+/* ========= أدوات ========= */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const yt=q=>"https://www.youtube.com/results?search_query="+encodeURIComponent(q);
+const lvl=d=>["مبتدئ","متوسط","متقدم"][d-1];
+const dots=d=>"●".repeat(d)+"○".repeat(3-d);
+const shuffle=a=>{a=[...a];for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a};
+let scores={},cat="الكل",term="";
+try{scores=JSON.parse(localStorage.getItem("scores")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("scores",JSON.stringify(scores))}catch(e){}};
+const passed=id=>(scores[id]||0)>=2;
+
+/* ========= الصفحة الرئيسية ========= */
+const cats=["الكل",...Object.keys(FIELDS)];
+$("#cnt").textContent=L.length;
+$("#chips").style.cssText="display:flex;gap:8px;flex-wrap:wrap";
+$("#chips").innerHTML=cats.map(c=>`<button class="chip" aria-pressed="${c==="الكل"}" data-c="${c}">${c}</button>`).join("");
+$("#chips").onclick=e=>{const b=e.target.closest("button");if(!b)return;cat=b.dataset.c;
+ document.querySelectorAll(".chip").forEach(x=>x.setAttribute("aria-pressed",x===b));render()};
+$("#q").oninput=e=>{term=e.target.value.trim().toLowerCase();render()};
+
+const card=x=>`<button class="card" data-id="${x.id}">
+ ${x.id in scores?`<span class="tag ${passed(x.id)?"ok":""}">${passed(x.id)?"✓ ":""}${scores[x.id]}/3</span>`:""}
+ <span class="badge" style="background:${x.c}">${esc(x.b)}</span><h3>${x.n}</h3><p>${x.s}</p>
+ <div class="meta"><span>${lvl(x.d)}</span><span class="dots" title="المستوى">${dots(x.d)}</span></div></button>`;
+
+function render(){
+ const list=L.filter(x=>(cat==="الكل"||x.cat===cat)&&(x.n+x.s+x.cat).toLowerCase().includes(term));
+ const groups=Object.keys(FIELDS).filter(f=>list.some(x=>x.cat===f));
+ $("#grid").innerHTML=groups.length?groups.map(f=>`<div class="grp"><h3>${f}</h3><p>${FIELDS[f]}</p>
+  <div class="grid">${list.filter(x=>x.cat===f).map(card).join("")}</div></div>`).join("")
+  :'<div class="empty">مفيش لغة بالاسم ده. جرّب كلمة تانية أو اختر «الكل».</div>';
+ const n=L.filter(x=>passed(x.id)).length;
+ $("#prog").innerHTML=`اجتزت امتحان <b>${n}</b> من ${L.length}`;
+}
+$("#grid").onclick=e=>{const c=e.target.closest(".card");if(c)info(c.dataset.id)};
+
+/* ========= نافذة اللغة ========= */
+const dlg=$("#dlg");
+const head=x=>`<div class="dh"><span class="badge" style="background:${x.c}">${esc(x.b)}</span>
+ <div style="flex:1"><h2 id="dt">${x.n}</h2><small>${x.cat} — مستوى ${lvl(x.d)}</small></div>
+ <button class="icon" id="cl" aria-label="إغلاق">✕</button></div>`;
+const bind=()=>{$("#cl").onclick=()=>dlg.close()};
+
+function info(id){
+ const x=L.find(i=>i.id===id),best=scores[id];
+ dlg.innerHTML=head(x)+`<div class="db"><h3>إيه هي؟</h3><p>${x.what}</p>
+ <h3>ليه مهمة؟</h3><p>${x.why}</p>
+ <h3>هتعمل بيها إيه؟</h3><ul>${x.use.map(u=>`<li>${u}</li>`).join("")}</ul>
+ <h3>ابدأ بالترتيب ده</h3><ol>${x.first.map(u=>`<li>${u}</li>`).join("")}</ol>
+ <h3>فيديوهات للتعلم على يوتيوب</h3><div class="vids">
+ <a class="vid" href="${yt(x.ar)}" target="_blank" rel="noopener"><span class="play">▶</span><div><b>شرح بالعربي</b><span>أفضل كورسات ${x.n}</span></div></a>
+ <a class="vid" href="${yt(x.en)}" target="_blank" rel="noopener"><span class="play">▶</span><div><b>Full course in English</b><span>كورسات كاملة للمبتدئين</span></div></a></div>
+ <div class="acts"><button class="btn" id="go">اختبر نفسك${best!==undefined?` (أفضل نتيجة ${best}/3)`:""}</button><button class="btn alt" id="bk">رجوع</button></div></div>`;
+ if(!dlg.open)dlg.showModal();
+ bind();$("#bk").onclick=()=>dlg.close();$("#go").onclick=()=>quiz(id);
+}
+
+/* ========= الامتحان ========= */
+function quiz(id){
+ const x=L.find(i=>i.id===id);
+ const qs=shuffle(x.q).map(([q,ok,w1,w2,why])=>({q,why,ok,o:shuffle([ok,w1,w2])}));
+ let i=0,score=0;
+ const show=()=>{
+  const c=qs[i];
+  dlg.innerHTML=head(x)+`<div class="db"><div class="qtop"><span>سؤال ${i+1} من ${qs.length}</span><span>النتيجة: ${score}</span></div>
+  <div class="qbar"><i style="width:${i/qs.length*100}%"></i></div>
+  <p class="qt">${esc(c.q)}</p>
+  <div class="opts">${c.o.map((o,k)=>`<button class="opt" data-k="${k}">${esc(o)}</button>`).join("")}</div>
+  <div id="fb" aria-live="polite"></div></div>`;
+  bind();
+  dlg.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+   const right=c.o[b.dataset.k]===c.ok;if(right)score++;
+   dlg.querySelectorAll(".opt").forEach(o=>{o.disabled=true;if(c.o[o.dataset.k]===c.ok)o.classList.add("ok")});
+   if(!right)b.classList.add("bad");
+   $("#fb").innerHTML=`<div class="fb"><b>${right?"إجابة صحيحة ✓":"إجابة غير صحيحة"}</b><br>${esc(c.why)}</div>
+    <div class="acts"><button class="btn" id="nx">${i+1<qs.length?"السؤال التالي":"شوف نتيجتك"}</button></div>`;
+   $("#nx").focus();
+   $("#nx").onclick=()=>{i++;i<qs.length?show():finish()};
+  });
+ };
+ const finish=()=>{
+  scores[id]=Math.max(scores[id]||0,score);save();render();
+  const msg=score===3?"ممتاز! فاهم الأساسيات كويس.":score===2?"كويس! اجتزت الامتحان، راجع السؤال اللي غلطت فيه.":"مش مشكلة، راجع الشرح والفيديوهات وجرّب تاني.";
+  dlg.innerHTML=head(x)+`<div class="db"><div class="score"><b>${score}/${qs.length}</b><p>${msg}</p></div>
+  <div class="acts"><button class="btn" id="re">أعد الامتحان</button><button class="btn alt" id="ex">رجوع للشرح</button></div></div>`;
+  bind();$("#re").onclick=()=>quiz(id);$("#ex").onclick=()=>info(id);
+ };
+ if(!dlg.open)dlg.showModal();
+ show();
+}
+dlg.addEventListener("click",e=>{if(e.target===dlg)dlg.close()});
+
+/* ========= الوضع الليلي ========= */
+const root=document.documentElement;
+try{const t=localStorage.getItem("theme");if(t)root.dataset.theme=t}catch(e){}
+$("#theme").onclick=()=>{const dark=root.dataset.theme?root.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;
+ root.dataset.theme=dark?"light":"dark";try{localStorage.setItem("theme",root.dataset.theme)}catch(e){}};
+render();
+
+</script>
+<script>
+/* more.js — بيتحمل بعد script.js وقبل exam.js. بيضيف 25 لغة ومجالات جديدة */
+Object.assign(FIELDS,{
+"أدوات وأتمتة":"سكريبتات بتوفّر وقتك وبتدير النظام والملفات.",
+"لغات متخصصة":"لغات لمجالات دقيقة وأفكار برمجية مختلفة.",
+"تعلم للمبتدئين":"بداية سهلة لفهم التفكير البرمجي."});
+
+const M=[
+["ruby","Ruby","Rb","#cc342d","ويب",1,"لغة ممتعة وسهلة القراءة، ومعاها إطار Rails الشهير.",
+"لغة كائنية صممها يوكيهيرو ماتسوموتو لتكون سعيدة للمبرمج.","Rails بتخلّيك تبني موقع كامل بسرعة، وبتفضل مفضلة في الشركات الناشئة.",
+["مواقع بـ Rails","شركات ناشئة ونماذج أولية","أتمتة وسكريبتات"],["أساسيات Ruby","الـ Classes والـ Blocks","موقع مدونة بـ Rails"],
+"تعلم Ruby من الصفر","Ruby programming full course",
+[["كل حاجة في Ruby هي؟","كائن (object)","دالة فقط","رقم فقط","في Ruby حتى الأرقام كائنات."],
+["أشهر إطار ويب في Ruby؟","Rails","Spring","Laravel","Ruby on Rails هو الأشهر."],
+["أمر الطباعة في Ruby؟","puts","echo","cout","puts بتطبع النص وتنزل سطر."]]],
+["sass","Sass / SCSS","Sass","#cd6799","ويب",1,"إضافة فوق CSS بتخلّي كتابة التنسيق أنظف وأسرع.",
+"لغة بتضيف لـ CSS متغيرات وتداخل ودوال، وبتتحول لـ CSS عادي.","بتقلل التكرار في المشاريع الكبيرة وبتنظم ملفات التنسيق.",
+["تنسيق مواقع كبيرة","أنظمة تصميم موحدة","تنظيم ملفات CSS"],["المتغيرات","الـ Nesting","الـ Mixins"],
+"تعلم Sass من الصفر","Sass SCSS crash course",
+[["بتتحول Sass في الآخر لـ؟","CSS","JavaScript","HTML","المتصفح بيفهم CSS بس، فـ Sass بتتترجم ليه."],
+["المتغير في Sass بيبدأ بـ؟","$","@","#","مثال: $main-color."],
+["الـ Nesting معناه؟","كتابة قواعد جوه بعض","تكرار الألوان","حذف التنسيق","بيخلّي الكود أقرب لهيكل HTML."]]],
+["gql","GraphQL","GQL","#e10098","ويب",2,"لغة استعلام بتطلب فيها بالظبط البيانات اللي محتاجها.",
+"لغة استعلام لـ APIs أنشأتها Facebook، العميل فيها بيحدد الحقول المطلوبة.","بتقلل البيانات الزيادة وعدد الطلبات مقارنة بـ REST.",
+["واجهات API مرنة","تطبيقات موبايل وويب","دمج مصادر بيانات"],["الـ Query و Mutation","الـ Schema","استخدام Apollo"],
+"تعلم GraphQL","GraphQL full course",
+[["مين أنشأ GraphQL؟","Facebook","Oracle","Apple","طورتها Facebook (Meta)."],
+["ميزتها الأساسية؟","العميل يطلب الحقول اللي محتاجها بس","بتصمم الصفحات","بتشغّل الألعاب","ده الفرق الأساسي عن REST."],
+["بتستخدم لـ؟","الاستعلام عن البيانات من API","تنسيق النصوص","تحرير الصور","هي لغة استعلام لواجهات البرمجة."]]],
+["c","C","C","#555e8c","ألعاب وأنظمة",3,"لغة الأنظمة الكلاسيكية، أساس لغات كتير.",
+"لغة قريبة من الجهاز صممها ديناميس ريتشي في السبعينات.","نواة لينكس وأنظمة التشغيل مكتوبة بيها، وتعلمها بيفهمك الذاكرة كويس.",
+["أنظمة التشغيل","الأنظمة المدمجة","مكتبات عالية الأداء"],["المتغيرات والمؤشرات","الذاكرة والمصفوفات","مشروع صغير بدون مكتبات"],
+"تعلم لغة C من الصفر","C programming full course",
+[["مين صمم لغة C؟","Dennis Ritchie","Guido van Rossum","James Gosling","ظهرت في Bell Labs أوائل السبعينات."],
+["نواة لينكس مكتوبة بـ؟","C","Python","Ruby","معظم نواة لينكس بلغة C."],
+["الدالة اللي بتطبع في C؟","printf","print_line","echo","printf من مكتبة stdio."]]],
+["lua","Lua","Lua","#2c2d72","ألعاب وأنظمة",1,"لغة خفيفة وسهلة، مشهورة في الألعاب.",
+"لغة صغيرة وسريعة بتتدمج بسهولة داخل البرامج.","Roblox بيستخدم Luau المبنية عليها، فهي بوابة لصناعة الألعاب.",
+["ألعاب Roblox","إضافات وسكريبتات للألعاب","أنظمة مدمجة"],["المتغيرات والجداول","الدوال","لعبة بسيطة في Roblox"],
+"تعلم لغة Lua","Lua programming tutorial",
+[["الفهرس الأول للمصفوفة في Lua؟","1","0","-1","الـ Tables في Lua بتبدأ من 1."],
+["بنية البيانات الأساسية في Lua؟","table","array فقط","class","الجدول بيمثل القوائم والكائنات."],
+["Roblox بيستخدم لغة مبنية على؟","Lua","Ruby","Perl","Luau مشتقة من Lua."]]],
+["gd","GDScript","GD","#478cbf","ألعاب وأنظمة",1,"لغة محرك Godot لصناعة الألعاب.",
+"لغة صياغتها شبه Python مصممة لمحرك Godot المجاني.","أسهل طريق لصناعة لعبة 2D أو 3D من غير تكلفة.",
+["ألعاب 2D","ألعاب 3D","نماذج أولية"],["واجهة Godot","الـ Nodes والـ Scenes","لعبة منصات بسيطة"],
+"تعلم Godot و GDScript","Godot GDScript beginner course",
+[["GDScript خاصة بمحرك؟","Godot","Unity","Unreal","اتصممت لـ Godot."],
+["صياغتها شبه؟","Python","C++","Java","الاعتماد على المسافات البادئة."],
+["الكلمة اللي بتعرّف دالة؟","func","def","function","func هي الكلمة في GDScript."]]],
+["asm","Assembly","ASM","#6e4c13","ألعاب وأنظمة",3,"أقرب لغة مقروءة لتعليمات المعالج.",
+"أوامر بسيطة بتتحول مباشرة لكود الآلة وبتختلف من معالج لآخر.","بتعرّفك الكمبيوتر بيشتغل إزاي من جوه، وبتفيد في الأمن والأنظمة.",
+["أنظمة مدمجة","الهندسة العكسية","محمّلات الإقلاع"],["السجلات (Registers)","التعليمات الأساسية","برنامج جمع رقمين"],
+"تعلم لغة Assembly","Assembly language tutorial for beginners",
+[["Assembly بتتحول لكود الآلة عن طريق؟","Assembler","Browser","Compiler فقط للويب","المجمّع (assembler) بيترجمها."],
+["التعليمة MOV بتعمل إيه؟","تنقل قيمة","تحذف ملف","ترسم صورة","MOV لنقل البيانات."],
+["كود Assembly واحد بيشتغل على أي معالج؟","لا، خاص بنوع المعالج","أيوه دايمًا","فقط على الموبايل","كل معمارية ليها تعليماتها."]]],
+["zig","Zig","Zig","#f7a41d","ألعاب وأنظمة",3,"لغة أنظمة حديثة بتركز على البساطة والتحكم الصريح.",
+"لغة من غير تحكم مخفي في الذاكرة، ومعاها ميزة comptime.","بديل حديث لـ C، والمترجم بتاعها بيقدر يترجم كود C.",
+["أنظمة وأدوات","محركات وألعاب","مكتبات سريعة"],["أساسيات Zig","إدارة الذاكرة","أداة سطر أوامر"],
+"تعلم لغة Zig","Zig programming language tutorial",
+[["ميزة comptime في Zig؟","تنفيذ كود وقت الترجمة","رسم الواجهات","اتصال بالإنترنت","بتسمح بحسابات قبل التشغيل."],
+["Zig بتركز على؟","البساطة والتحكم الصريح","السحب والإفلات","تحليل الجداول","فلسفة اللغة: مفيش تحكم مخفي."],
+["نوعها؟","لغة أنظمة","لغة تنسيق","لغة استعلام","منافس لـ C."]]],
+["matlab","MATLAB","ML","#e16737","بيانات وذكاء اصطناعي",2,"بيئة قوية للحسابات الهندسية والمصفوفات.",
+"اسمها من Matrix Laboratory، وبتشتغل على المصفوفات بسهولة.","منتشرة في كليات الهندسة والبحث العلمي والتحكم.",
+["محاكاة هندسية","معالجة إشارات وصور","تحليل رياضي"],["المصفوفات","الرسم البياني","سكريبتات ودوال"],
+"تعلم MATLAB من الصفر","MATLAB full course beginners",
+[["اسم MATLAB اختصار لـ؟","Matrix Laboratory","Math Language","Master Lab","المصفوفات أساس اللغة."],
+["مين بيطورها؟","MathWorks","Google","Apple","شركة MathWorks."],
+["تتميز في؟","المصفوفات والحسابات الهندسية","تصميم المواقع","الألعاب","مجالها الهندسة والحوسبة."]]],
+["julia","Julia","Jl","#9558b2","بيانات وذكاء اصطناعي",2,"سرعة قريبة من C مع سهولة لغة ديناميكية.",
+"لغة للحوسبة العلمية بتترجم وقت التشغيل (JIT) عبر LLVM.","مناسبة للبيانات الكبيرة والمحاكاة من غير ما تكتب C.",
+["حوسبة علمية","تعلم الآلة","محاكاة"],["أساسيات Julia","المصفوفات","رسم ومكتبات"],
+"تعلم لغة Julia","Julia programming language course",
+[["ميزة Julia الأساسية؟","سرعة عالية مع سهولة","بدون كتابة كود","تصميم واجهات فقط","مصممة للأداء العلمي."],
+["بتترجم عن طريق؟","JIT عبر LLVM","تفسير بطيء فقط","محرر نصوص","JIT بيدّيها سرعة."],
+["مجالها؟","الحوسبة العلمية","تصميم الألعاب","إدارة الشبكات","الحسابات الرقمية."]]],
+["mojo","Mojo","Mj","#ff4f00","بيانات وذكاء اصطناعي",2,"لغة جديدة لأداء الذكاء الاصطناعي بصياغة شبه Python.",
+"لغة من شركة Modular بتهدف لتجمع سهولة Python وأداء اللغات السريعة.","فيها مستقبل في الذكاء الاصطناعي لو بتعرف Python.",
+["تسريع نماذج الذكاء الاصطناعي","برمجة عالية الأداء","تحويل كود Python"],["أساسيات Python","أساسيات Mojo","تسريع دالة"],
+"تعلم لغة Mojo","Mojo programming language tutorial",
+[["صياغة Mojo قريبة من؟","Python","Fortran","COBOL","اتصممت بحيث يألفها مبرمجو Python."],
+["هدفها الأساسي؟","أداء عالي لتطبيقات الذكاء الاصطناعي","تصميم المواقع","إدارة الملفات","التركيز على سرعة AI."],
+["الشركة اللي طورتها؟","Modular","Mozilla","Meta","شركة Modular."]]],
+["objc","Objective-C","ObjC","#438eff","موبايل",3,"لغة أبل القديمة لتطبيقات iOS و macOS.",
+"لغة مبنية على C مع رسائل الكائنات على طريقة Smalltalk.","لسه موجودة في تطبيقات قديمة كتير، وبتفيدك لو بتصون كود iOS.",
+["صيانة تطبيقات قديمة","مكتبات أبل","أنظمة macOS"],["صياغة الرسائل","الـ Classes","الربط مع Swift"],
+"تعلم Objective-C","Objective-C tutorial for beginners",
+[["أبل استخدمتها قبل Swift؟","Objective-C","Go","Kotlin","كانت اللغة الأساسية لـ iOS."],
+["شكل نداء الدالة في Objective-C؟","[object method]","object->method()","object::method","نموذج الرسائل بين أقواس مربعة."],
+["اللغة اللي حلّت محلها كأساسية؟","Swift","Ruby","Lua","أبل بتشجع على Swift."]]],
+["scala","Scala","Sc","#dc322f","سيرفرات وشركات",3,"لغة بتجمع البرمجة الكائنية والدالية على JVM.",
+"لغة من تصميم مارتن أودرسكي بتشتغل على JVM.","مستخدمة في معالجة البيانات الكبيرة، فـ Apache Spark مكتوب بيها.",
+["معالجة البيانات الضخمة","سيرفرات عالية الأداء","أنظمة موزعة"],["أساسيات Scala","الـ Case Classes","استخدام Spark"],
+"تعلم Scala","Scala full course",
+[["Scala بتشتغل على؟","JVM","BEAM","Node.js","بتتحول لـ Java bytecode."],
+["Apache Spark مكتوب بـ؟","Scala","Rust","Perl","Spark اتكتب بـ Scala."],
+["Scala بتجمع بين؟","OOP والبرمجة الدالية","HTML و CSS","SQL و NoSQL","مدمجة بين الأسلوبين."]]],
+["ex","Elixir","Ex","#6e4a7e","سيرفرات وشركات",3,"لغة للأنظمة اللي محتاجة تحمّل أعطال وتزامن عالي.",
+"لغة دالية بتشتغل على آلة Erlang الافتراضية (BEAM).","مناسبة للدردشة والأنظمة الفورية، وإطارها Phoenix قوي.",
+["دردشة وأنظمة فورية","مواقع بـ Phoenix","أنظمة موزعة"],["أساسيات Elixir","الـ Pattern Matching","تطبيق Phoenix صغير"],
+"تعلم Elixir","Elixir programming full course",
+[["أشهر إطار ويب في Elixir؟","Phoenix","Rails","Spring","Phoenix هو الأساسي."],
+["Elixir بتشتغل على؟","BEAM (آلة Erlang)","JVM","CLR","نفس آلة Erlang."],
+["ميزتها؟","تزامن عالي وتحمل أعطال","تصميم الصور","الجداول فقط","مستفادة من Erlang."]]],
+["cobol","COBOL","COB","#5b5b5b","سيرفرات وشركات",2,"لغة قديمة لسه بتشغّل البنوك والحكومات.",
+"لغة ظهرت في 1959 للأعمال، الاسم Common Business-Oriented Language.","ملايين الأسطر لسه شغالة في البنوك، ومبرمجوها قليلين وعليهم طلب.",
+["أنظمة بنوك","أنظمة حكومية","معالجة معاملات"],["هيكل البرنامج","أنواع البيانات","معالجة ملفات"],
+"تعلم COBOL","COBOL programming tutorial",
+[["COBOL مستخدمة لسه في؟","البنوك والحكومات","الألعاب فقط","تطبيقات الموبايل الجديدة","أنظمة قديمة كبيرة بتعتمد عليها."],
+["COBOL ظهرت في؟","1959","1995","2010","من أقدم اللغات."],
+["COBOL اختصار لـ؟","Common Business-Oriented Language","Code Basic Language","Computer Binary Logic","لغة موجهة للأعمال."]]],
+["perl","Perl","Pl","#39457e","سيرفرات وشركات",2,"لغة قوية في معالجة النصوص.",
+"لغة سكريبتات صممها لاري وال، مشهورة بالتعابير النمطية.","مفيدة في تحليل الملفات والسجلات وأتمتة الأنظمة.",
+["معالجة النصوص","أتمتة السيرفرات","تحليل السجلات"],["المتغيرات","التعابير النمطية","سكريبت لتحليل ملف"],
+"تعلم Perl","Perl programming tutorial",
+[["مين طور Perl؟","Larry Wall","Dennis Ritchie","Bjarne Stroustrup","لاري وال."],
+["قوة Perl الأساسية؟","معالجة النصوص والتعابير النمطية","تصميم الواجهات","الألعاب","Regex من أقوى مميزاتها."],
+["المتغير العادي (scalar) بيبدأ بـ؟","$","%","&","$name للقيم المفردة."]]],
+["sh","Bash","Sh","#3a3a3a","أدوات وأتمتة",1,"لغة سطر الأوامر على لينكس وماك.",
+"لغة بتشغّل أوامر النظام وبتربطها في سكريبتات.","أي مبرمج أو مدير سيرفرات لازم يعرفها لأتمتة الشغل.",
+["أتمتة المهام","إدارة السيرفرات","نسخ احتياطي"],["الأوامر الأساسية","المتغيرات والشروط","سكريبت لترتيب ملفاتك"],
+"تعلم Bash و لينكس","Bash scripting full course",
+[["الأمر cd بيعمل إيه؟","يغيّر المجلد الحالي","يحذف ملف","يعرض الوقت","cd = change directory."],
+["الأمر ls بيعرض؟","محتويات المجلد","ذاكرة الجهاز","المستخدمين فقط","ls = list."],
+["العلامة | في Bash معناها؟","تمرير ناتج أمر كمدخل لأمر تاني","جمع رقمين","تعليق","اسمها pipe."]]],
+["ps","PowerShell","PS","#2671be","أدوات وأتمتة",2,"لغة مايكروسوفت لإدارة ويندوز وأتمتة المهام.",
+"أوامرها (cmdlets) على شكل فعل-اسم زي Get-Process.","مهمة لمدير الأنظمة والـ DevOps في بيئات مايكروسوفت.",
+["إدارة ويندوز","أتمتة المهام","إدارة Azure"],["الـ Cmdlets","الـ Pipeline","سكريبت لتنظيف ملفات"],
+"تعلم PowerShell","PowerShell full course beginners",
+[["شكل الأمر في PowerShell؟","فعل-اسم مثل Get-Process","اسم فقط","رقم ثم نص","اسمها cmdlets."],
+["بتمرر بين الأوامر؟","كائنات (objects)","نصوص فقط","صور","عكس Bash اللي بيمرر نصوص."],
+["مين طورها؟","مايكروسوفت","جوجل","أبل","من مايكروسوفت."]]],
+["vba","VBA","VBA","#217346","أدوات وأتمتة",1,"أتمتة Excel و Word بالماكرو.",
+"لغة مدمجة في Office بتخلّي الجداول والمستندات تتحرك لوحدها.","بتوفر ساعات شغل يدوي لأي موظف بيتعامل مع Excel.",
+["ماكرو في Excel","تقارير تلقائية","أتمتة Word و Outlook"],["محرر VBA","الخلايا والـ Ranges","ماكرو لتنسيق تقرير"],
+"تعلم VBA و ماكرو","Excel VBA full course",
+[["VBA بتشتغل جوه؟","Microsoft Office","المتصفح","لينكس","Excel وWord وغيرهم."],
+["الماكرو هو؟","كود بينفّذ مهام تلقائيًا","لون في الجدول","نوع خط","أتمتة خطوات متكررة."],
+["اختصار فتح محرر VBA في Excel؟","Alt + F11","Ctrl + S","Alt + F4","Alt+F11 يفتح المحرر."]]],
+["sol","Solidity","Sol","#3c3c3d","لغات متخصصة",3,"لغة العقود الذكية على Ethereum.",
+"لغة لكتابة برامج بتشتغل على البلوكتشين.","مطلوبة في مشاريع Web3 والعملات اللامركزية.",
+["العقود الذكية","تطبيقات لامركزية","رموز رقمية"],["أساسيات Solidity","كتابة عقد بسيط","اختبار العقد"],
+"تعلم Solidity","Solidity full course smart contracts",
+[["Solidity بتستخدم لكتابة؟","العقود الذكية","صفحات ويب","قواعد بيانات","ليها علاقة بـ Ethereum."],
+["امتداد ملفاتها؟",".sol",".sd",".sc","الملفات بتنتهي بـ .sol."],
+["العقد الذكي هو؟","برنامج بيتنفذ على البلوكتشين","ملف PDF","تطبيق دردشة","بيتنفذ تلقائيًا بشروط."]]],
+["hs","Haskell","Hs","#5e5086","لغات متخصصة",3,"لغة دالية بحتة بتغيّر طريقة تفكيرك.",
+"لغة دالية قوية الأنواع بتأجّل الحساب لحد الحاجة (Lazy).","بتعلّمك التفكير بالدوال، وده يفيدك في أي لغة.",
+["أبحاث وتحليل","أنظمة مالية","تعلّم البرمجة الدالية"],["الدوال النقية","الأنواع","الـ Lists والـ Recursion"],
+"تعلم Haskell","Haskell programming tutorial",
+[["Haskell لغة؟","دالية بحتة","كائنية فقط","للاستعلام عن البيانات","تعتمد على الدوال."],
+["الـ Lazy Evaluation معناها؟","الحساب بيتأجل لحد ما يتطلب","الحساب بيتم مرتين","منع الأخطاء","من خصائص Haskell."],
+["الدالة النقية (pure) معناها؟","نفس المدخل بيدي نفس الناتج بدون آثار جانبية","دالة بدون اسم","دالة طويلة","دي قاعدة البرمجة الدالية."]]],
+["f90","Fortran","Ft","#734f96","لغات متخصصة",2,"من أقدم اللغات، لسه قوية في الحوسبة العلمية.",
+"ظهرت في 1957 واسمها من Formula Translation.","مستخدمة في محاكاة الطقس والفيزياء لسرعتها العالية.",
+["محاكاة الطقس","حسابات فيزيائية","حوسبة فائقة"],["المتغيرات والمصفوفات","الحلقات","برنامج حسابات"],
+"تعلم Fortran","Fortran tutorial for beginners",
+[["مجال Fortran الأساسي؟","الحوسبة العلمية","تصميم المواقع","الألعاب","من أقدم لغات العلوم."],
+["ظهرت في؟","1957","1999","2015","واحدة من أقدم اللغات العالية المستوى."],
+["اسمها اختصار لـ؟","Formula Translation","Fast Transfer","File Transaction","ترجمة المعادلات."]]],
+["lisp","Lisp","Lisp","#3fb68b","لغات متخصصة",3,"عائلة لغات قديمة وبسيطة وقوية.",
+"ظهرت في 1958 على يد جون مكارثي، والكود فيها قوائم بين أقواس.","لعبت دور كبير في تاريخ الذكاء الاصطناعي وأثّرت على لغات كتير.",
+["أبحاث الذكاء الاصطناعي","تعلم مفاهيم البرمجة","محررات وأدوات"],["القوائم والأقواس","الدوال","الـ Recursion"],
+"تعلم Lisp","Common Lisp tutorial",
+[["مين طور Lisp؟","John McCarthy","Linus Torvalds","Larry Wall","ظهرت في 1958."],
+["أبرز شكل في Lisp؟","الأقواس والكود كقوائم","المسافات البادئة","العلامة $","الكود والبيانات بنفس الشكل."],
+["اشتهرت في؟","أبحاث الذكاء الاصطناعي","تصميم الصور","الألعاب","دور كبير في تاريخ AI."]]],
+["scratch","Scratch","Sc","#ff8c1a","تعلم للمبتدئين",1,"تعلّم البرمجة بسحب وتجميع البلوكات.",
+"لغة بصرية من MIT بتخلّيك تبني ألعاب وقصص بدون كتابة كود.","أحسن بداية للأطفال والمبتدئين تماماً لفهم الشروط والحلقات.",
+["ألعاب بسيطة","قصص متحركة","فهم المنطق"],["واجهة Scratch","الحركة والأحداث","لعبة بسيطة"],
+"تعلم سكراتش من الصفر","Scratch programming full course",
+[["مين طوّر Scratch؟","MIT","Google","Microsoft","من معهد MIT."],
+["بتبني برامجك في Scratch بـ؟","سحب وتجميع بلوكات","كتابة سطور طويلة","أوامر الطرفية","لغة بصرية."],
+["Scratch مناسبة لـ؟","الأطفال والمبتدئين","المحترفين فقط","الذكاء الاصطناعي فقط","بتبسّط المفاهيم الأولى."]]],
+["pas","Pascal","Pas","#3b6ea8","تعلم للمبتدئين",1,"لغة تعليمية منظمة بتعلّم البرمجة الصحيحة.",
+"صممها نيكولاوس فيرث في السبعينات لتعليم البرمجة المنظمة.","Delphi مبني عليها، ولسه بتدرّس في مدارس وجامعات.",
+["تعلم الأساسيات","تطبيقات سطح مكتب (Delphi)","مسابقات مدرسية"],["هيكل البرنامج","الشروط والحلقات","برنامج حاسبة"],
+"تعلم لغة Pascal","Pascal programming tutorial",
+[["مين صمم Pascal؟","Niklaus Wirth","Bill Gates","Steve Jobs","نيكولاوس فيرث."],
+["اتصممت أساسًا لـ؟","تعليم البرمجة","الألعاب","تحليل الصور","لتعليم البرمجة المنظمة."],
+["Delphi مبنية على؟","Pascal","Lua","Zig","Delphi هي Object Pascal."]]]
+];
+L.push(...M.map(a=>Object.fromEntries(K.map((k,i)=>[k,a[i]]))));
+$("#cnt").textContent=L.length;
+$("#chips").innerHTML=["الكل",...Object.keys(FIELDS)].map(c=>`<button class="chip" aria-pressed="${c==="الكل"}" data-c="${c}">${c}</button>`).join("");
+cat="الكل";render();
+
+</script>
+<script>
+/* exam.js — بيتحمل بعد script.js (بيستخدم L و FIELDS و $ و esc و shuffle منه) */
+const LV=[
+{k:"beg",n:"مبتدئ",d:"أسئلة الدرس الأول والأساسيات",t:"mcq"},
+{k:"low",n:"أقل من المتوسط",d:"مفاهيم أساسية بتفاصيل أكتر",t:"mcq"},
+{k:"mid",n:"أعلى من المتوسط",d:"حل مشكلات صغيرة بالكود",t:"code"},
+{k:"pro",n:"محترف",d:"خوارزميات وتعامل مع البيانات",t:"code"},
+{k:"leg",n:"أسطوري",d:"تحديات صعبة للأقوياء",t:"code"}];
+
+const BANK2={
+html:[
+["إيه الفرق بين div و span؟","div عنصر كتلة وspan عنصر داخلي (inline)","div للنصوص وspan للصور","مفيش فرق بينهم","div بياخد سطر كامل، وspan بيفضل جوه السطر."],
+["وظيفة الخاصية alt في وسم img؟","نص بديل للصورة ولقارئات الشاشة","تغيير حجم الصورة","تدوير الصورة","alt بتفيد إمكانية الوصول وSEO."],
+["أي قيمة position بتثبّت العنصر في مكانه أثناء التمرير؟","fixed","static","relative","position:fixed مرتبط بنافذة المتصفح."],
+["وحدة rem بتعتمد على؟","حجم الخط في عنصر html","عرض الشاشة","ارتفاع الصفحة","rem نسبة لحجم خط الجذر."]],
+js:[
+["ناتج [1,2,3].map(x=>x*2) ؟","[2,4,6]","[1,2,3]","6","map بترجع مصفوفة جديدة بنتيجة الدالة على كل عنصر."],
+["الفرق بين === و == ؟","=== بتقارن القيمة والنوع بدون تحويل","=== أبطأ بس نفس النتيجة","== للنصوص فقط","== بتعمل تحويل نوع تلقائي وده بيسبب مفاجآت."],
+["إيه اللي بترجعه الدالة لو مفيهاش return؟","undefined","null","0","الدالة بدون return بترجع undefined."],
+["فايدة async/await؟","كتابة الكود غير المتزامن بشكل متسلسل أسهل","تسريع المعالج","تعريف ثوابت","هي طريقة أنضف للتعامل مع الـ Promises."]],
+py:[
+["ناتج [x*x for x in range(3)] ؟","[0, 1, 4]","[1, 4, 9]","[0, 1, 2]","range(3) بتدي 0 و1 و2."],
+["الفرق بين list و tuple؟","الـ tuple مينفعش تتعدّل","الـ list أسرع دايمًا","tuple للنصوص فقط","tuple غير قابلة للتعديل (immutable)."],
+["الكلمة اللي بتعرّف دالة؟","def","func","function","def هي كلمة تعريف الدوال."],
+["ناتج 7 // 2 ؟","3","3.5","4","// هي القسمة الصحيحة."]],
+sql:[
+["أي أمر بيضيف صف جديد؟","INSERT INTO","ADD ROW","APPEND","INSERT INTO بتضيف سجل."],
+["الفرق بين WHERE و HAVING؟","HAVING بتصفّي بعد التجميع GROUP BY","نفس الشيء","WHERE للأعمدة وHAVING للجداول","WHERE قبل التجميع وHAVING بعده."],
+["أي دالة بترجع عدد الصفوف؟","COUNT()","TOTAL()","LENGTH()","COUNT بتعدّ الصفوف."],
+["PRIMARY KEY معناه؟","قيمة فريدة تحدد كل صف","عمود نصي فقط","عمود بيتحذف تلقائيًا","المفتاح الأساسي بيميّز كل سجل."]]
+};
+
+/* تحديات الكود (JavaScript): tests = [[الوسائط],[المتوقع]] — آخر اختبار مخفي */
+const CH={
+mid:[
+{fn:"uniqueSorted",t:"بدون تكرار ومرتبة",desc:"اكتب الدالة uniqueSorted(arr) اللي ترجع مصفوفة الأرقام بدون تكرار ومرتبة تصاعديًا.",
+start:"function uniqueSorted(arr) {\n  // اكتب حلك هنا\n  \n}\n",
+tests:[[[[3,1,3,2]],[1,2,3]],[[[]],[]],[[[5,5,5]],[5]],[[[10,2,2,1]],[1,2,10]]]},
+{fn:"isPalindrome",t:"هل الجملة متناظرة؟",desc:"اكتب isPalindrome(s) اللي ترجع true لو النص بيتقرا بنفس الشكل من الاتجاهين، مع تجاهل الحروف الكبيرة والرموز والمسافات.",
+start:"function isPalindrome(s) {\n  \n}\n",
+tests:[[["A man, a plan, a canal: Panama"],true],[["hello"],false],[[""],true],[["No 'x' in Nixon"],true]]},
+{fn:"twoSum",t:"رقمين مجموعهم الهدف",desc:"اكتب twoSum(nums, target) اللي ترجع فهرسَي الرقمين اللي مجموعهم target (الأصغر أولًا). فيه حل واحد بالتأكيد.",
+start:"function twoSum(nums, target) {\n  \n}\n",
+tests:[[[[2,7,11,15],9],[0,1]],[[[3,2,4],6],[1,2]],[[[3,3],6],[0,1]],[[[1,5,8,3,9],12],[3,4]]]}],
+pro:[
+{fn:"flatten",t:"تسطيح مصفوفة متداخلة",desc:"اكتب flatten(arr) اللي تحوّل المصفوفة المتداخلة لمصفوفة واحدة مسطحة. جرّب تحلها بدون flat().",
+start:"function flatten(arr) {\n  \n}\n",
+tests:[[[[1,[2,[3,[4]]]]],[1,2,3,4]],[[[]],[]],[[[[1],[2,[3]],4]],[1,2,3,4]],[[[[[[[5]]]],6]],[5,6]]]},
+{fn:"groupBy",t:"تجميع حسب خاصية",desc:"اكتب groupBy(arr, key) اللي ترجع كائن، مفتاحه قيمة الخاصية key، وقيمته مصفوفة العناصر اللي ليها نفس القيمة.",
+start:"function groupBy(arr, key) {\n  \n}\n",
+tests:[[[[{t:"a",n:1},{t:"b",n:2},{t:"a",n:3}],"t"],{a:[{t:"a",n:1},{t:"a",n:3}],b:[{t:"b",n:2}]}],[[[],"x"],{}],[[[{k:2},{k:1},{k:2}],"k"],{1:[{k:1}],2:[{k:2},{k:2}]}]]},
+{fn:"validBrackets",t:"الأقواس المتوازنة",desc:"اكتب validBrackets(s) اللي ترجع true لو كل قوس مفتوح من ( [ { له قوس إغلاق مناسب بالترتيب الصحيح.",
+start:"function validBrackets(s) {\n  \n}\n",
+tests:[[["()[]{}"],true],[["(]"],false],[["([)]"],false],[["(("],false],[["{[()]}"],true]]}],
+leg:[
+{fn:"longestUniqueSubstring",t:"أطول نص فرعي بدون تكرار",desc:"اكتب longestUniqueSubstring(s) اللي ترجع طول أطول جزء متصل من النص بدون حرف مكرر. حاول تحلها في وقت O(n).",
+start:"function longestUniqueSubstring(s) {\n  \n}\n",
+tests:[[["abcabcbb"],3],[["bbbbb"],1],[["pwwkew"],3],[[""],0],[["dvdf"],3]]},
+{fn:"mergeIntervals",t:"دمج الفترات المتداخلة",desc:"اكتب mergeIntervals(arr) اللي تدمج الفترات المتداخلة وترجعها مرتبة. لاحظ إن الإدخال ممكن يكون غير مرتب.",
+start:"function mergeIntervals(arr) {\n  \n}\n",
+tests:[[[[[1,3],[2,6],[8,10],[15,18]]],[[1,6],[8,10],[15,18]]],[[[[1,4],[4,5]]],[[1,5]]],[[[[6,8],[1,3],[2,4]]],[[1,4],[6,8]]],[[[[1,10],[2,3],[4,5]]],[[1,10]]]]},
+{fn:"lcsLength",t:"أطول تتابع مشترك",desc:"اكتب lcsLength(a, b) اللي ترجع طول أطول تتابع (Subsequence) مشترك بين النصين. فكّر في البرمجة الديناميكية.",
+start:"function lcsLength(a, b) {\n  \n}\n",
+tests:[[["abcde","ace"],3],[["abc","def"],0],[["AGGTAB","GXTXAYB"],4],[["abcbdab","bdcaba"],4]]}]
+};
+
+const sget=(k,d)=>{try{const v=JSON.parse(localStorage.getItem(k));return v===null?d:v}catch(e){return d}};
+const sset=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
+
+const scopeOpts=Object.keys(FIELDS).map(f=>`<optgroup label="${f}"><option value="f:${f}">كل لغات مجال ${f}</option>${L.filter(x=>x.cat===f).map(x=>`<option value="l:${x.id}">${x.n}</option>`).join("")}</optgroup>`).join("");
+
+document.querySelector("footer").insertAdjacentHTML("beforebegin",`
+<section id="exam"><div class="wrap">
+ <h2>امتحان</h2>
+ <p class="lead">اختار اللغة أو المجال كله، وبعدين اختار مستواك. المستويات الأولى أسئلة اختيار من متعدد، والمستويات العالية امتحانات عملية بتكتب فيها كود حقيقي.</p>
+ <div class="selrow"><label for="xs">إيه اللي هتمتحن فيه؟</label><select id="xs">${scopeOpts}</select></div>
+ <div class="lvls" id="xl"></div>
+ <div id="xb"></div>
+</div></section>
+<section id="editor"><div class="wrap">
+ <h2>كتابة الأكواد</h2>
+ <p class="lead">محرر شبه VS Code. اختار تحدي من القائمة (أعلى من المتوسط، محترف، أسطوري)، اكتب حلك، واضغط Run أو Ctrl+Enter. وفيه ملف playground.js تجرّب فيه أي كود بحرية.</p>
+ <div class="vsc" dir="ltr">
+  <div class="vs-title"><i class="r"></i><i class="y"></i><i class="g"></i><span id="vt">playground.js — Code Lab</span></div>
+  <div class="vs-body">
+   <div class="vs-act" aria-hidden="true"><span class="on">▤</span><span>⌕</span><span>⑂</span><span>⚙</span></div>
+   <div class="vs-side" id="vx"></div>
+   <div class="vs-main">
+    <div class="vs-tabs"><span class="tab" id="tb">playground.js</span></div>
+    <div class="vs-task" id="tk" dir="rtl"></div>
+    <div class="vs-ed"><pre class="gut" id="gut" aria-hidden="true">1</pre>
+     <div class="stack"><pre class="hl" id="hl" aria-hidden="true"></pre><textarea id="ta" spellcheck="false" wrap="off" aria-label="محرر الكود"></textarea></div></div>
+    <div class="vs-panel"><div class="vs-pt"><b>OUTPUT</b><span class="sp"></span><button id="rs">Reset</button><button id="run">▶ Run</button></div>
+     <pre id="out" dir="auto">اضغط Run لتشغيل الكود.</pre></div>
+   </div>
+  </div>
+  <div class="vs-status"><span>JavaScript</span><span id="pos">Ln 1, Col 1</span><span>UTF-8</span><span id="pg"></span></div>
+ </div>
+</div></section>`);
+
+document.querySelector(".nav .links").insertAdjacentHTML("beforeend",'<a class="l" href="#exam">امتحان</a><a class="l" href="#editor">كتابة الأكواد</a>');
+
+/* ===== قسم الامتحان ===== */
+let xlv="beg";
+const pool=(sc,lv)=>{
+ const [t,v]=sc.split(":");
+ const langs=t==="f"?L.filter(x=>x.cat===v):L.filter(x=>x.id===v);
+ let qs=[];langs.forEach(x=>{qs=qs.concat(lv==="beg"?x.q:(BANK2[x.id]||[]))});
+ return shuffle(qs).slice(0,10);
+};
+const renderLv=()=>{
+ const done=sget("codeDone",{}),best=sget("examBest",{});
+ $("#xl").innerHTML=LV.map(l=>{
+  let info;
+  if(l.t==="code")info=CH[l.k].filter((c,i)=>done[l.k+i]).length+"/"+CH[l.k].length+" تحديات اتحلت";
+  else{const b=best[$("#xs").value+"|"+l.k];info=b===undefined?"لسه ما امتحنتش":"أفضل نتيجة "+b+"%"}
+  return `<button class="lv" data-k="${l.k}" aria-pressed="${l.k===xlv}"><b>${l.n}</b><span>${l.d}</span><small>${l.t==="code"?"عملي بالكود":"اختيار من متعدد"} — ${info}</small></button>`;
+ }).join("");
+};
+const startPanel=()=>{
+ const l=LV.find(x=>x.k===xlv),box=$("#xb");
+ if(l.t==="code"){
+  box.innerHTML=`<div class="xpanel"><p>مستوى «${l.n}» امتحان عملي: هتكتب كود JavaScript حقيقي في محرر الأكواد، والمحرر بيصحّح حلك بالاختبارات.</p><div class="acts"><button class="btn" id="xo">افتح المحرر على مستوى ${l.n}</button></div></div>`;
+  $("#xo").onclick=()=>openLevel(xlv);return;
+ }
+ const n=pool($("#xs").value,xlv).length;
+ box.innerHTML=n?`<div class="xpanel"><p>${n} سؤال في «${l.n}». كل سؤال بيظهرلك شرحه بعد الإجابة.</p><div class="acts"><button class="btn" id="xg">ابدأ الامتحان</button></div></div>`
+  :`<div class="xpanel"><p>أسئلة مستوى «${l.n}» لسه مش متاحة للغة أو المجال ده. جرّب HTML أو JavaScript أو Python أو SQL، أو اختار «مبتدئ».</p></div>`;
+ if(n)$("#xg").onclick=runX;
+};
+function runX(){
+ const sc=$("#xs").value,box=$("#xb");
+ const qs=pool(sc,xlv).map(([q,ok,a,b,why])=>({q,why,ok,o:shuffle([ok,a,b])}));
+ let i=0,s=0;
+ const show=()=>{
+  const c=qs[i];
+  box.innerHTML=`<div class="xpanel"><div class="qtop"><span>سؤال ${i+1} من ${qs.length}</span><span>النتيجة: ${s}</span></div>
+  <div class="qbar"><i style="width:${i/qs.length*100}%"></i></div><p class="qt">${esc(c.q)}</p>
+  <div class="opts">${c.o.map((o,k)=>`<button class="opt" data-k="${k}">${esc(o)}</button>`).join("")}</div><div id="xf" aria-live="polite"></div></div>`;
+  box.querySelectorAll(".opt").forEach(b=>b.onclick=()=>{
+   const right=c.o[b.dataset.k]===c.ok;if(right)s++;
+   box.querySelectorAll(".opt").forEach(o=>{o.disabled=true;if(c.o[o.dataset.k]===c.ok)o.classList.add("ok")});
+   if(!right)b.classList.add("bad");
+   $("#xf").innerHTML=`<div class="fb"><b>${right?"إجابة صحيحة ✓":"إجابة غير صحيحة"}</b><br>${esc(c.why)}</div><div class="acts"><button class="btn" id="xn">${i+1<qs.length?"السؤال التالي":"شوف نتيجتك"}</button></div>`;
+   $("#xn").focus();$("#xn").onclick=()=>{i++;i<qs.length?show():end()};
+  });
+ };
+ const end=()=>{
+  const pct=Math.round(s/qs.length*100),best=sget("examBest",{}),key=sc+"|"+xlv;
+  best[key]=Math.max(best[key]||0,pct);sset("examBest",best);renderLv();
+  const msg=pct>=80?"ممتاز! مستواك قوي في الجزء ده.":pct>=60?"كويس! اجتزت الامتحان، راجع الأسئلة اللي غلطت فيها.":"مش مشكلة، راجع الشرح والفيديوهات وجرّب تاني.";
+  box.innerHTML=`<div class="xpanel"><div class="score"><b>${s}/${qs.length}</b><p>${msg}</p></div><div class="acts"><button class="btn" id="xr">أعد الامتحان</button><button class="btn alt" id="xu">اختار مستوى تاني</button></div></div>`;
+  $("#xr").onclick=runX;$("#xu").onclick=startPanel;
+ };
+ show();
+}
+$("#xl").onclick=e=>{const b=e.target.closest(".lv");if(!b)return;xlv=b.dataset.k;renderLv();startPanel()};
+$("#xs").onchange=()=>{renderLv();startPanel()};
+renderLv();startPanel();
+
+/* ===== محرر الأكواد ===== */
+const PLAY={key:"play",name:"playground.js",tests:null,fn:null,
+ start:"// جرّب أي كود JavaScript هنا واضغط Run\nconst nums = [1, 2, 3, 4, 5];\nconsole.log(nums.map(n => n * n));\n"};
+const FILES=[PLAY,...LV.filter(l=>l.t==="code").flatMap(l=>CH[l.k].map((c,i)=>({...c,key:l.k+i,lv:l.n,name:c.fn+".js"})))];
+const ta=$("#ta"),hl=$("#hl"),gut=$("#gut"),out=$("#out");
+let cur=PLAY,dr=sget("drafts",{});
+
+const hlcode=c=>esc(c).replace(/(\/\/.*$)|(&quot;.*?&quot;|'.*?'|`[\s\S]*?`)|\b(const|let|var|function|return|if|else|for|while|of|in|new|class|true|false|null|undefined|async|await|break|continue|switch|case|try|catch|throw)\b|\b(\d+\.?\d*)\b/gm,
+ (m,cm,st,kw)=>cm?`<i class="c">${m}</i>`:st?`<i class="s">${m}</i>`:kw?`<i class="k">${m}</i>`:`<i class="n">${m}</i>`);
+const paint=()=>{hl.innerHTML=hlcode(ta.value)+"\n";gut.textContent=ta.value.split("\n").map((_,i)=>i+1).join("\n")};
+const pos=()=>{const v=ta.value.slice(0,ta.selectionStart).split("\n");$("#pos").textContent="Ln "+v.length+", Col "+(v[v.length-1].length+1)};
+const progress=()=>{const d=sget("codeDone",{});$("#pg").textContent="Solved "+Object.keys(d).length+"/"+(FILES.length-1)};
+
+const tree=()=>{
+ const d=sget("codeDone",{});
+ $("#vx").innerHTML=`<div class="vh">EXPLORER</div><div class="fd">▾ PLAYGROUND</div><button class="fl ${cur.key==="play"?"on":""}" data-k="play">playground.js</button>`+
+ LV.filter(l=>l.t==="code").map(l=>`<div class="fd">▾ ${l.n}</div>`+CH[l.k].map((c,i)=>`<button class="fl ${cur.key===l.k+i?"on":""}" data-k="${l.k+i}">${c.fn}.js${d[l.k+i]?' <span class="ck">✓</span>':""}</button>`).join("")).join("");
+};
+const openFile=key=>{
+ cur=FILES.find(f=>f.key===key);
+ ta.value=dr[key]!==undefined?dr[key]:cur.start;
+ $("#tb").textContent=cur.name;$("#vt").textContent=cur.name+" — Code Lab";
+ $("#tk").innerHTML=cur.tests?`<b>${cur.lv}</b> — ${esc(cur.t)}<br>${esc(cur.desc)}<br><small>${cur.tests.length} اختبارات (آخر اختبار مخفي). اكتب الدالة ${cur.fn} واضغط Run.</small>`
+  :"ملف حر للتجربة: اكتب أي كود واستخدم console.log لطباعة النتائج.";
+ out.textContent="اضغط Run لتشغيل الكود.";
+ paint();pos();tree();
+};
+function openLevel(k){
+ const d=sget("codeDone",{}),i=CH[k].findIndex((c,j)=>!d[k+j]);
+ openFile(k+(i<0?0:i));
+ document.getElementById("editor").scrollIntoView({behavior:"smooth"});
+}
+$("#vx").onclick=e=>{const b=e.target.closest(".fl");if(b)openFile(b.dataset.k)};
+
+ta.oninput=()=>{paint();pos();dr[cur.key]=ta.value;sset("drafts",dr)};
+ta.onscroll=()=>{hl.scrollTop=ta.scrollTop;hl.scrollLeft=ta.scrollLeft;gut.scrollTop=ta.scrollTop};
+ta.onkeyup=ta.onclick=pos;
+ta.onkeydown=e=>{
+ if(e.key==="Tab"){e.preventDefault();ta.setRangeText("  ",ta.selectionStart,ta.selectionEnd,"end");ta.dispatchEvent(new Event("input"))}
+ if((e.ctrlKey||e.metaKey)&&e.key==="Enter"){e.preventDefault();$("#run").click()}
+};
+$("#rs").onclick=()=>{delete dr[cur.key];sset("drafts",dr);ta.value=cur.start;paint();pos();out.textContent="اتعمل Reset للملف."};
+
+/* تشغيل الكود: Web Worker بمهلة 3 ثواني، ولو المتصفح منع الـ Worker بيشتغل مباشرة */
+function core(d){
+ const logs=[],con={log:(...a)=>logs.push(a.map(x=>typeof x==="string"?x:JSON.stringify(x)).join(" "))};
+ try{
+  const f=new Function("console",d.code+"\n;return typeof "+d.fn+"==='function'?"+d.fn+":null;")(con);
+  if(!d.tests)return{logs};
+  if(!f)return{logs,error:"الدالة "+d.fn+" مش موجودة. اتأكد من اسمها."};
+  return{logs,out:d.tests.map(t=>{try{const got=f(...JSON.parse(JSON.stringify(t[0])));const g=JSON.stringify(got);return{ok:g===JSON.stringify(t[1]),got:g}}catch(e){return{ok:false,err:String(e)}}})};
+ }catch(e){return{logs,error:String(e)}}
+}
+const runCode=d=>new Promise(res=>{
+ let w;
+ try{w=new Worker(URL.createObjectURL(new Blob(["const core="+core+";onmessage=e=>postMessage(core(e.data));"],{type:"text/javascript"})))}
+ catch(e){return res(core(d))}
+ const t=setTimeout(()=>{w.terminate();res({logs:[],error:"انتهى الوقت (3 ثواني). غالبًا في حلقة لا نهائية."})},3000);
+ w.onmessage=e=>{clearTimeout(t);w.terminate();res(e.data)};
+ w.onerror=()=>{clearTimeout(t);w.terminate();res(core(d))};
+ w.postMessage(d);
+});
+
+$("#run").onclick=async()=>{
+ out.textContent="Running…";
+ const f=cur,r=await runCode({code:ta.value,fn:f.fn,tests:f.tests});
+ const lines=[...r.logs];
+ if(r.error)lines.push("✗ "+r.error);
+ else if(f.tests){
+  let ok=0;
+  r.out.forEach((o,i)=>{
+   const t=f.tests[i],hid=i===f.tests.length-1;
+   const name=hid?"اختبار مخفي":f.fn+"("+t[0].map(a=>JSON.stringify(a)).join(", ")+")";
+   if(o.ok){ok++;lines.push("✓ "+name+(hid?"":" → "+JSON.stringify(t[1])))}
+   else lines.push("✗ "+name+(hid?"":"   المتوقع: "+JSON.stringify(t[1])+"   اللي رجع: "+(o.err||o.got)));
+  });
+  const all=ok===f.tests.length;
+  lines.push("",all?"PASSED "+ok+"/"+f.tests.length+" — مبروك، التحدي اتحل!":"FAILED "+ok+"/"+f.tests.length+" — حاول تاني");
+  if(all){const d=sget("codeDone",{});d[f.key]=1;sset("codeDone",d);tree();progress();renderLv()}
+ }else if(!lines.length)lines.push("(الكود اشتغل من غير مخرجات. استخدم console.log لعرض النتائج)");
+ out.innerHTML=lines.map(l=>`<span class="${l[0]==="✓"||l.startsWith("PASSED")?"g":l[0]==="✗"||l.startsWith("FAILED")?"rd":""}">${esc(l)}</span>`).join("\n");
+};
+
+openFile("play");progress();
+
+</script>
+<script>
+/* auth.js — بيتحمل بعد exam.js (بيستخدم $ و esc و sget و sset) */
+
+/* لربط تسجيل الدخول الاجتماعي الحقيقي: عرّف الدالة handler، وبعد ما السيرفر يأكد الهوية نادي completeLogin */
+const AUTH_CONFIG={handler:null}; // مثال: AUTH_CONFIG.handler = provider => { window.location = "/auth/" + provider }
+
+const PROV=[
+["google","Google","G","#ea4335"],
+["facebook","Facebook","f","#1877f2"],
+["apple","Apple","A","#111"],
+["tiktok","TikTok","♪","#111"]];
+
+const adlg=document.createElement("dialog");
+adlg.id="authd";adlg.setAttribute("aria-labelledby","at");
+document.body.appendChild(adlg);
+adlg.addEventListener("click",e=>{if(e.target===adlg)adlg.close()});
+$("#theme").insertAdjacentHTML("beforebegin",'<button class="btn" id="au"></button>');
+
+const session=()=>sget("session",null);
+const users=()=>sget("users",{});
+
+function navBtn(){
+ const s=session(),b=$("#au");
+ b.textContent=s?"👤 "+s.name.split(" ")[0]:"تسجيل الدخول";
+ b.className=s?"btn alt":"btn";
+ b.onclick=()=>authView(s?"acct":"in");
+}
+function completeLogin(p){
+ sset("session",{name:p.name||p.email.split("@")[0],email:p.email,provider:p.provider||"email"});
+ navBtn();if(adlg.open)adlg.close();
+}
+window.completeLogin=completeLogin;
+
+const hash=async(p,salt)=>{
+ const b=new TextEncoder().encode(salt+p);
+ if(window.crypto&&crypto.subtle){const h=await crypto.subtle.digest("SHA-256",b);return[...new Uint8Array(h)].map(x=>x.toString(16).padStart(2,"0")).join("")}
+ let h=5381;for(const x of b)h=((h<<5)+h+x)>>>0;return String(h);
+};
+
+const ahead=t=>`<div class="dh"><div style="flex:1"><h2 id="at">${t}</h2></div><button class="icon" id="ax" aria-label="إغلاق">✕</button></div>`;
+
+function authView(mode){
+ if(mode==="acct"){
+  const s=session();
+  adlg.innerHTML=ahead("حسابي")+`<div class="db"><div class="acct"><div class="avatar">${esc(s.name[0].toUpperCase())}</div>
+   <h3 style="color:var(--ink);font-size:22px;margin:0">${esc(s.name)}</h3><p>${esc(s.email)}</p><p>طريقة الدخول: ${esc(s.provider)}</p></div>
+   <div class="acts" style="justify-content:center"><button class="btn alt" id="lo">تسجيل الخروج</button></div></div>`;
+  $("#lo").onclick=()=>{sset("session",null);navBtn();adlg.close()};
+ }else{
+  const up=mode==="up";
+  adlg.innerHTML=ahead(up?"إنشاء حساب جديد":"تسجيل الدخول")+`<div class="db">
+   <div class="soc">${PROV.map(([k,n,g,c])=>`<button class="sb" data-p="${k}"><span class="ico" style="background:${c}">${g}</span>المتابعة عبر ${n}</button>`).join("")}</div>
+   <div id="am" aria-live="polite"></div>
+   <div class="sep">أو بالبريد الإلكتروني</div>
+   <div class="tabs2" role="tablist"><button role="tab" aria-selected="${!up}" data-m="in">دخول</button><button role="tab" aria-selected="${up}" data-m="up">حساب جديد</button></div>
+   <form id="af" novalidate>
+    ${up?'<label class="fld">الاسم<input id="an" autocomplete="name" required></label>':""}
+    <label class="fld">البريد الإلكتروني<input id="ae" type="email" autocomplete="email" dir="ltr" required></label>
+    <label class="fld">كلمة المرور (6 أحرف على الأقل)<input id="ap" type="password" autocomplete="${up?"new-password":"current-password"}" dir="ltr" required></label>
+    <div id="er" aria-live="polite"></div>
+    <div class="acts"><button class="btn" type="submit">${up?"إنشاء الحساب":"دخول"}</button></div>
+   </form>
+   <p class="fine">الحسابات هنا بتتحفظ في متصفحك أنت بس. لما تربط الموقع بسيرفر هتنتقل لقاعدة بيانات حقيقية.</p></div>`;
+  adlg.querySelectorAll(".tabs2 button").forEach(b=>b.onclick=()=>authView(b.dataset.m));
+  adlg.querySelectorAll(".sb").forEach(b=>b.onclick=()=>social(b.dataset.p));
+  $("#af").onsubmit=e=>{e.preventDefault();submit(up)};
+ }
+ $("#ax").onclick=()=>adlg.close();
+ if(!adlg.open)adlg.showModal();
+}
+
+function social(p){
+ if(typeof AUTH_CONFIG.handler==="function")return AUTH_CONFIG.handler(p);
+ const n=PROV.find(x=>x[0]===p)[1];
+ $("#am").innerHTML=`<div class="msg inf">الدخول عبر ${n} محتاج ربط حقيقي بخدمة ${n} وسيرفر يتحقق من الهوية، وده لسه مش مفعّل في الموقع. سجّل بالبريد الإلكتروني دلوقتي.</div>`;
+}
+
+async function submit(up){
+ const er=$("#er"),email=$("#ae").value.trim().toLowerCase(),pw=$("#ap").value,name=up?$("#an").value.trim():"";
+ const bad=m=>{er.innerHTML=`<div class="msg err">${m}</div>`};
+ if(up&&name.length<2)return bad("اكتب اسمك (حرفين على الأقل).");
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email))return bad("البريد الإلكتروني غير صحيح.");
+ if(pw.length<6)return bad("كلمة المرور لازم تكون 6 أحرف على الأقل.");
+ const db=users();
+ if(up){
+  if(db[email])return bad("البريد ده مسجّل قبل كده. جرّب تسجيل الدخول.");
+  const salt=Math.random().toString(36).slice(2);
+  db[email]={name,salt,h:await hash(pw,salt)};sset("users",db);
+  completeLogin({name,email,provider:"email"});
+ }else{
+  const u=db[email];
+  if(!u||u.h!==await hash(pw,u.salt))return bad("البريد أو كلمة المرور غير صحيحة.");
+  completeLogin({name:u.name,email,provider:"email"});
+ }
+}
+navBtn();
+
+</script>
+
+<!-- نافذة تثبيت الموقع كتطبيق -->
+<div class="pwa-overlay" id="pwaModal" role="dialog" aria-modal="true" aria-labelledby="pwaTitle">
+  <div class="pwa-card">
+    <button class="pwa-close" id="pwaClose" aria-label="إغلاق">✕</button>
+    <div class="pwa-top">
+      <div class="pwa-appicon">&lt;/&gt;</div>
+      <div>
+        <h3 class="pwa-title" id="pwaTitle">نزّل «ابدأ برمجة» كتطبيق!</h3>
+        <p class="pwa-sub">على سطح المكتب أو الشاشة الرئيسية لموبايلك</p>
+      </div>
+    </div>
+    <div class="pwa-feats">
+      <div><b>✓</b> فتح سريع بضغطة واحدة</div>
+      <div><b>✓</b> شاشة كاملة بدون شريط المتصفح</div>
+      <div><b>✓</b> حفظ تقدمك وامتحاناتك</div>
+      <div><b>✓</b> خفيف جدًا ومجاني 100%</div>
+    </div>
+    <div class="pwa-guide" id="pwaGuide" hidden></div>
+    <div class="pwa-btns">
+      <button class="btn" id="pwaInstallBtn">📲 تثبيت التطبيق الآن</button>
+      <button class="btn alt" id="pwaLaterBtn">لاحقًا</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ========= PWA: تهيئة التطبيق ورسالة التثبيت التلقائية ========= */
+(function(){
+  // 1. إنشاء Web App Manifest ديناميكيًا ليدعم التثبيت الفعلي على الموبايل والكمبيوتر
+  const iconSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'><defs><linearGradient id='g' x1='0' y1='0' x2='1' y2='1'><stop offset='0%' stop-color='#2b55f5'/><stop offset='100%' stop-color='#7f52ff'/></linearGradient></defs><rect width='512' height='512' rx='112' fill='url(#g)'/><text x='50%' y='54%' dominant-baseline='middle' text-anchor='middle' fill='#ffc83d' font-family='monospace' font-weight='900' font-size='210'>&lt;/&gt;</text></svg>`;
+  const iconUrl = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(iconSvg);
+  const manifest = {
+    name: "ابدأ برمجة — تعلّم البرمجة من الصفر",
+    short_name: "ابدأ برمجة",
+    description: "منصة عربية تفاعلية لتعلّم لغات البرمجة والامتحانات وكتابة الأكواد.",
+    start_url: location.href,
+    display: "standalone",
+    background_color: "#0b1020",
+    theme_color: "#2b55f5",
+    dir: "rtl",
+    lang: "ar",
+    icons: [
+      { src: iconUrl, sizes: "192x192", type: "image/svg+xml", purpose: "any maskable" },
+      { src: iconUrl, sizes: "512x512", type: "image/svg+xml", purpose: "any maskable" }
+    ]
+  };
+  const mLink = document.createElement("link");
+  mLink.rel = "manifest";
+  mLink.href = "data:application/manifest+json;charset=utf-8," + encodeURIComponent(JSON.stringify(manifest));
+  document.head.appendChild(mLink);
+
+  // تسجيل Service Worker خفيف عند الفتح عبر HTTP/HTTPS لتفعيل زر التثبيت المباشر في Chrome/Edge
+  if ("serviceWorker" in navigator && location.protocol.startsWith("http")) {
+    const swCode = "self.addEventListener('install',e=>self.skipWaiting());self.addEventListener('activate',e=>e.waitUntil(self.clients.claim()));self.addEventListener('fetch',e=>{});";
+    const swUrl = URL.createObjectURL(new Blob([swCode], { type: "application/javascript" }));
+    navigator.serviceWorker.register(swUrl).catch(()=>{});
+  }
+
+  let deferredPrompt = null;
+  const modal = document.getElementById("pwaModal");
+  const installBtn = document.getElementById("pwaInstallBtn");
+  const laterBtn = document.getElementById("pwaLaterBtn");
+  const closeBtn = document.getElementById("pwaClose");
+  const navBtn = document.getElementById("navInstall");
+  const guide = document.getElementById("pwaGuide");
+
+  const isStandalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone === true;
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+  const isAndroid = /Android/i.test(navigator.userAgent);
+
+  function showModal(forceManual) {
+    if (isStandalone) return;
+    if (deferredPrompt && !forceManual) {
+      guide.hidden = true;
+      installBtn.textContent = "📲 تثبيت التطبيق الآن";
+    } else if (isIOS) {
+      guide.hidden = false;
+      guide.innerHTML = "<b>طريقة التثبيت على آيفون / آيباد:</b><br>1. اضغط على زر المشاركة <b>(Share ⬆️)</b> في أسفل المتصفح.<br>2. اختر <b>«إضافة إلى الشاشة الرئيسية» (Add to Home Screen)</b>.";
+      installBtn.textContent = "فهمت، سأضيفه الآن ✓";
+    } else if (isAndroid) {
+      guide.hidden = false;
+      guide.innerHTML = "<b>طريقة التثبيت على الموبايل:</b><br>1. اضغط على القائمة <b>(⋮)</b> أعلى المتصفح.<br>2. اختر <b>«تثبيت التطبيق»</b> أو <b>«الإضافة إلى الشاشة الرئيسية»</b>.";
+      installBtn.textContent = "فهمت، سأثبته الآن ✓";
+    } else {
+      guide.hidden = false;
+      guide.innerHTML = "<b>طريقة التثبيت على سطح المكتب:</b><br>1. اضغط على أيقونة التثبيت <b>(⊕)</b> في شريط العنوان بالأعلى، أو افتح قائمة المتصفح <b>(⋮)</b>.<br>2. اختر <b>«تثبيت ابدأ برمجة» (Install App)</b> أو <b>«إنشاء اختصار»</b>.";
+      installBtn.textContent = "حسنًا، فهمت ✓";
+    }
+    modal.classList.add("show");
+  }
+
+  function hideModal() {
+    modal.classList.remove("show");
+    try { sessionStorage.setItem("pwaPromptDismissed", "1"); } catch (e) {}
+  }
+
+  // التقاط حدث التثبيت المباشر من المتصفح (Chrome / Edge / Android)
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    guide.hidden = true;
+    installBtn.textContent = "📲 تثبيت التطبيق الآن";
+    if (!isStandalone) modal.classList.add("show");
+  });
+
+  window.addEventListener("appinstalled", () => {
+    deferredPrompt = null;
+    hideModal();
+    if (navBtn) navBtn.style.display = "none";
+  });
+
+  installBtn.addEventListener("click", async () => {
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      deferredPrompt = null;
+      if (outcome === "accepted") hideModal();
+    } else {
+      hideModal();
+    }
+  });
+
+  laterBtn.addEventListener("click", hideModal);
+  closeBtn.addEventListener("click", hideModal);
+  modal.addEventListener("click", (e) => { if (e.target === modal) hideModal(); });
+  if (navBtn) {
+    if (isStandalone) navBtn.style.display = "none";
+    else navBtn.addEventListener("click", () => showModal(false));
+  }
+
+  // إظهار الرسالة تلقائيًا أول ما المستخدم يفتح الموقع (بعد 600 مللي ثانية لنعومة العرض)
+  if (!isStandalone) {
+    setTimeout(() => {
+      try {
+        if (!sessionStorage.getItem("pwaPromptDismissed")) showModal(false);
+      } catch (e) {
+        showModal(false);
+      }
+    }, 600);
+  }
+})();
+</script>
+
+</body>
+</html>
